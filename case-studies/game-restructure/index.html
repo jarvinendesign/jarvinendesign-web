@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Game restructure case study: reducing cognitive load through clearer UI, economy, systems, progression, and onboarding."
+    />
+    <title>Game Restructure Case Study | Jarvinen Design</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Manrope:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="game-restructure.css" />
+    <script src="game-restructure.js" defer></script>
+  </head>
+  <body>
+    <header class="case-header">
+      <a class="case-wordmark" href="../../index.html" aria-label="Jarvinen Design home">
+        <span><img src="../../images/jd_logo_transparent.png" alt="" aria-hidden="true"></span>
+        <strong>Jarvinen Design</strong>
+      </a>
+      <div class="case-header-links">
+        <a href="../../index.html#work">All case studies</a>
+        <a href="#outcome">Outcome</a>
+      </div>
+      <a class="case-close" href="../../index.html#work">
+        Close <span aria-hidden="true">×</span>
+      </a>
+    </header>
+
+    <div class="progress" aria-hidden="true"></div>
+
+    <nav class="chapter-nav" aria-label="Case study chapters">
+      <a href="#intro"><i></i><span>Intro</span></a>
+      <a href="#challenge"><i></i><span>Challenge</span></a>
+      <a href="#loop"><i></i><span>Core loop</span></a>
+      <a href="#ui"><i></i><span>UI/UX</span></a>
+      <a href="#onboarding"><i></i><span>Onboarding</span></a>
+      <a href="#systems"><i></i><span>Systems</span></a>
+      <a href="#outcome"><i></i><span>Outcome</span></a>
+    </nav>
+
+    <main>
+      <section class="case-section hero" id="intro">
+        <div class="content hero-grid">
+          <div>
+            <p class="eyebrow">Game restructure · Product design · UI/UX</p>
+            <h1>Reducing complexity without removing depth.</h1>
+            <p class="lead">
+              I restructured an evolving game by redesigning its UI, economy,
+              progression, systems, and onboarding around a clearer player journey.
+            </p>
+            <div class="pills">
+              <span>Core-loop redesign</span>
+              <span>Information architecture</span>
+              <span>Onboarding</span>
+              <span>Cognitive-load reduction</span>
+            </div>
+          </div>
+          <figure class="hero-image">
+            <img
+              src="game-walking-map.png"
+              alt="Moomin Move walking and exploration game screen"
+            />
+            <figcaption>From a single activity to a connected live product</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="case-section" id="challenge">
+        <div class="content">
+          <div class="section-intro">
+            <div>
+              <p class="eyebrow">01 / The challenge</p>
+              <h2>More depth had created more cognitive load.</h2>
+            </div>
+            <p>
+              Features had accumulated faster than the experience around them. Players
+              faced more screens, currencies, goals, and dependencies without a clear
+              hierarchy explaining what mattered next.
+            </p>
+          </div>
+
+          <div class="challenge-grid">
+            <article class="challenge-card">
+              <span>01</span>
+              <h3>Unclear progression</h3>
+              <p>
+                Players could see many activities, but not always how they connected
+                to a meaningful short- or long-term goal.
+              </p>
+            </article>
+            <article class="challenge-card">
+              <span>02</span>
+              <h3>System accumulation</h3>
+              <p>
+                Base building, cooking, gifting, pets, relationships, and events had
+                grown into a dense network of requirements and rewards.
+              </p>
+            </article>
+            <article class="challenge-card">
+              <span>03</span>
+              <h3>Weak information hierarchy</h3>
+              <p>
+                Repeated blue layouts made different activities feel alike and
+                weakened orientation, hierarchy, and purpose.
+              </p>
+            </article>
+            <article class="challenge-card dark">
+              <span>Design question</span>
+              <h3>How could the game feel easier to understand while becoming deeper?</h3>
+            </article>
+          </div>
+
+          <div class="compare">
+            <figure>
+              <img src="map-early.jpg" alt="Early game map with limited systems visible" />
+              <figcaption><strong>Earlier structure</strong> A focused product with limited visible depth.</figcaption>
+            </figure>
+            <figure>
+              <img
+                src="map-season-dense.jpg"
+                alt="Later game map with events, quests, pets, characters, and landmarks"
+              />
+              <figcaption><strong>Growing complexity</strong> More possibilities requiring stronger hierarchy and guidance.</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-section dark-section" id="loop">
+        <div class="content">
+          <div class="section-intro">
+            <div>
+              <p class="eyebrow">02 / Core-loop redesign</p>
+              <h2>Give every action a visible place in the journey.</h2>
+            </div>
+            <p>
+              I reorganized the product around two understandable loops. Each created
+              resources, goals, and reasons to return to the other.
+            </p>
+          </div>
+
+          <div class="loop-grid">
+            <article class="loop-card walking">
+              <span class="loop-index">Active loop</span>
+              <h3>Explore and discover</h3>
+              <ol>
+                <li>Walk through the real-world map</li>
+                <li>Find characters, pets, items, and landmarks</li>
+                <li>Collect steps, resources, and seasonal objects</li>
+                <li>Return with materials and new goals</li>
+              </ol>
+            </article>
+            <div class="loop-link" aria-hidden="true">↔</div>
+            <article class="loop-card home">
+              <span class="loop-index">Home loop</span>
+              <h3>Invest and progress</h3>
+              <ol>
+                <li>Cook, gift, build, and upgrade</li>
+                <li>Progress friends, pets, and personal spaces</li>
+                <li>Join events and make economy decisions</li>
+                <li>Return outside with stronger motivation</li>
+              </ol>
+            </article>
+          </div>
+
+          <blockquote>
+            “A game built around movement should still have something meaningful to
+            offer when the player comes home.”
+          </blockquote>
+        </div>
+      </section>
+
+      <section class="case-section" id="ui">
+        <div class="content">
+          <div class="section-intro">
+            <div>
+              <p class="eyebrow">03 / UI and information architecture</p>
+              <h2>When gameplay happens in UI, clarity is game design.</h2>
+            </div>
+            <p>
+              The interface became the organizing layer for the whole game: separating
+              spaces, prioritizing decisions, and revealing detail only when useful.
+            </p>
+          </div>
+
+          <div class="ui-principles">
+            <article>
+              <strong>Orient</strong>
+              <h3>Give each space an identity</h3>
+              <p>Map, cooking, valley, friends, shop, quests, and events became visually distinct.</p>
+            </article>
+            <article>
+              <strong>Prioritize</strong>
+              <h3>Reduce decisions per screen</h3>
+              <p>Goals, rewards, requirements, and primary actions were easier to scan and compare.</p>
+            </article>
+            <article>
+              <strong>Connect</strong>
+              <h3>Explain cause and effect</h3>
+              <p>Resources and upgrades showed where they came from, what they enabled, and why they mattered.</p>
+            </article>
+          </div>
+
+          <div class="screen-rail" aria-label="Restructured product areas">
+            <figure>
+              <img src="game-cooking.png" alt="Cooking system in the restructured game" />
+              <figcaption><strong>Cooking</strong> Resources become purposeful progression.</figcaption>
+            </figure>
+            <figure>
+              <img src="game-building-valley.png" alt="Home valley building and decoration system" />
+              <figcaption><strong>Home valley</strong> Expression connects to relationships and goals.</figcaption>
+            </figure>
+            <figure>
+              <img src="game-friends.png" alt="Moomin friendship and character progression system" />
+              <figcaption><strong>Friends</strong> Character attachment makes systems meaningful.</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-section onboarding-section" id="onboarding">
+        <div class="content onboarding-grid">
+          <div>
+            <p class="eyebrow">04 / Onboarding</p>
+            <h2>Teach one useful idea at a time.</h2>
+            <p class="lead">
+              The redesigned onboarding reduced simultaneous information, connected
+              instructions to immediate goals, and delayed systems until the player
+              had a reason to use them.
+            </p>
+          </div>
+          <div class="onboarding-steps">
+            <article><span>01</span><h3>Clear first goal</h3><p>One guided action at a time.</p></article>
+            <article><span>02</span><h3>Emotional reason</h3><p>Help a recognizable character.</p></article>
+            <article><span>03</span><h3>Progressive reveal</h3><p>Keep later systems out of the player's working memory.</p></article>
+            <article><span>04</span><h3>Open-world promise</h3><p>Show the personal journey beyond the tutorial.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-section" id="systems">
+        <div class="content">
+          <div class="section-intro">
+            <div>
+              <p class="eyebrow">05 / Progression and economy</p>
+              <h2>Complexity became a connected progression model.</h2>
+            </div>
+            <p>
+              The restructure clarified sources, sinks, unlocks, and dependencies.
+              Systems could remain deep because the player no longer had to understand
+              all of them at once.
+            </p>
+          </div>
+
+          <div class="system-map">
+            <article class="system-core">
+              <span>Player journey</span>
+              <strong>Discover → Care → Build → Return</strong>
+            </article>
+            <article><strong>Relationships</strong><p>Gifting and character goals turn resources into emotional progress.</p></article>
+            <article><strong>Home valley</strong><p>Furniture affects visitors, parties, seasonal goals, and expression.</p></article>
+            <article><strong>Pets</strong><p>Passive support reduces collection friction and creates long-term investment.</p></article>
+            <article><strong>Team goals</strong><p>Cooperation creates shared motivation without mandatory competition.</p></article>
+            <article><strong>Progression</strong><p>Clear milestones show what opens next and where effort creates lasting value.</p></article>
+            <article><strong>Economy</strong><p>Readable sources and useful sinks connect collection, upgrades, and optional spending.</p></article>
+          </div>
+
+          <figure class="wide-image">
+            <img src="team-quest-board.png" alt="Team quest board with shared goals and rewards" />
+            <figcaption>Shared goals gave the growing system stack a cooperative rhythm.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="case-section outcome-section" id="outcome">
+        <div class="content">
+          <div class="section-intro">
+            <div>
+              <p class="eyebrow">06 / Product transformation</p>
+              <h2>A deeper game became easier to understand.</h2>
+            </div>
+            <p>
+              The result was a more coherent free-to-play product with clearer
+              navigation, stronger progression logic, and less information competing
+              for attention at each step.
+            </p>
+          </div>
+
+          <div class="outcome-grid">
+            <article><strong>30+</strong><span>Systems organized into a connected product model</span></article>
+            <article><strong>2</strong><span>Core loops linking active exploration and home progression</span></article>
+            <article><strong>1</strong><span>Progressive onboarding path instead of simultaneous feature exposure</span></article>
+            <article><strong class="compact">Free → F2P</strong><span>Economy and progression rebuilt around long-term player value</span></article>
+          </div>
+
+          <div class="reflection-grid">
+            <div>
+              <h3>What changed</h3>
+              <p>
+                The product moved from accumulated features toward a clearer hierarchy
+                of goals, loops, systems, resources, and long-term progression.
+              </p>
+            </div>
+            <div>
+              <h3>My role</h3>
+              <p>
+                I worked hands-on across product direction, game systems, UI/UX,
+                information architecture, onboarding, economy, progression, and
+                implementation.
+              </p>
+            </div>
+            <div>
+              <h3>What it required</h3>
+              <p>
+                Systems thinking, close implementation work, and the willingness to
+                remove, regroup, or delay ideas when they made the player journey harder
+                to understand.
+              </p>
+            </div>
+          </div>
+
+          <a class="next-case" href="../live-ops/index.html">
+            Continue to the Live Ops ecosystem case study <span>↗</span>
+          </a>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

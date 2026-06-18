@@ -1,0 +1,928 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Moomin Move Japan Live Ops case study: seasonal planning, content delivery, economy tuning, monetization, partnerships, and long-term product stewardship.">
+    <title>LiveOps Ecosystem Case Study | Jarvinen Design</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --night: #172c3b;
+            --deep: #244458;
+            --cream: #f6f0e4;
+            --paper: #fffaf0;
+            --coral: #e76f62;
+            --sun: #efb64d;
+            --mint: #79a985;
+            --sky: #72aeb8;
+            --plum: #806c91;
+            --ink: #183244;
+            --muted: #68767d;
+            --line: rgba(24, 50, 68, 0.14);
+            --radius: 28px;
+            --shadow: 0 22px 65px rgba(24, 50, 68, 0.12);
+        }
+
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            margin: 0;
+            color: var(--ink);
+            background: var(--cream);
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            line-height: 1.55;
+        }
+
+        body::before {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            content: "";
+            opacity: 0.25;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.07'/%3E%3C/svg%3E");
+        }
+
+        .progress {
+            position: fixed;
+            z-index: 20;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--coral), var(--sun));
+        }
+
+        nav {
+            position: fixed;
+            z-index: 10;
+            top: 50%;
+            left: 25px;
+            display: grid;
+            gap: 11px;
+            transform: translateY(-50%);
+        }
+
+        nav a {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            color: var(--muted);
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: .13em;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        nav i {
+            width: 9px;
+            height: 9px;
+            border: 1px solid currentColor;
+            border-radius: 50%;
+            background: var(--cream);
+        }
+
+        nav span { opacity: 0; transition: opacity 160ms ease; }
+        nav:hover span, nav a:focus span { opacity: 1; }
+        nav a.active i { border-color: var(--coral); background: var(--coral); transform: scale(1.3); }
+
+        main { overflow: hidden; }
+        .slide {
+            position: relative;
+            display: grid;
+            align-items: start;
+            padding: 90px max(7vw, 90px);
+        }
+
+        .hero {
+            min-height: 100vh;
+            align-items: center;
+        }
+
+        .content { width: min(1180px, 100%); margin: 0 auto; }
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            margin: 0 0 18px;
+            color: var(--coral);
+            font-size: 12px;
+            font-weight: 900;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+        }
+
+        .eyebrow::before { width: 28px; height: 2px; content: ""; background: currentColor; }
+        h1, h2, h3, p { margin-top: 0; }
+        h1, h2, .display {
+            font-family: Georgia, "Times New Roman", serif;
+            font-weight: 500;
+            letter-spacing: -.035em;
+        }
+
+        h1 { max-width: 930px; margin-bottom: 25px; font-size: clamp(58px, 8.6vw, 126px); line-height: .88; }
+        h2 { max-width: 800px; margin-bottom: 22px; font-size: clamp(44px, 6vw, 80px); line-height: .98; }
+        h3 { margin-bottom: 10px; font-size: 17px; }
+        .lead { max-width: 720px; color: var(--muted); font-size: clamp(18px, 2vw, 24px); }
+
+        .hero {
+            color: var(--cream);
+            background:
+                radial-gradient(circle at 82% 30%, rgba(239,182,77,.24), transparent 24rem),
+                radial-gradient(circle at 18% 80%, rgba(114,174,184,.18), transparent 26rem),
+                var(--night);
+        }
+
+        .hero .eyebrow { color: var(--sun); }
+        .hero .lead { color: rgba(246,240,228,.68); }
+        .hero-grid { display: block; }
+
+        .pills { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 35px; }
+        .pill {
+            padding: 8px 13px;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            color: var(--muted);
+            background: rgba(255,255,255,.45);
+            font-size: 12px;
+            font-weight: 800;
+        }
+
+        .hero .pill { border-color: rgba(255,255,255,.18); color: rgba(255,255,255,.7); background: rgba(255,255,255,.06); }
+        .card {
+            overflow: hidden;
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            background: rgba(255,250,240,.78);
+            box-shadow: 0 12px 40px rgba(24,50,68,.07);
+        }
+
+        .stat-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; margin-top: 45px; }
+        .stat { min-height: 155px; padding: 25px; }
+        .stat strong { display: block; margin-bottom: 12px; color: var(--coral); font: 500 clamp(38px,4vw,58px)/1 Georgia,serif; }
+        .stat span { color: var(--muted); font-size: 13px; }
+        .stat.challenge {
+            border-color: rgba(128, 108, 145, 0.35);
+            background: #f0e8f3;
+        }
+        .stat.challenge::before {
+            display: block;
+            margin-bottom: 12px;
+            content: "Delivery challenge";
+            color: var(--plum);
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: .13em;
+            text-transform: uppercase;
+        }
+        .stat.challenge strong { color: var(--plum); }
+
+        .diagram-scroll {
+            overflow-x: auto;
+            margin-top: 38px;
+            padding: 14px 4px 25px;
+        }
+
+        .activation-image {
+            min-width: 1080px;
+            margin: 0;
+            padding: 14px;
+            background: #efefed;
+            border: 1px solid var(--line);
+            border-radius: 30px;
+            box-shadow: 0 18px 48px rgba(24,50,68,.08);
+        }
+
+        .activation-image img {
+            display: block;
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+        }
+
+        .diagram-legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-top: 8px;
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .diagram-legend span { display: inline-flex; align-items: center; gap: 7px; }
+        .diagram-legend i { width: 25px; height: 2px; background: #9aabae; }
+        .diagram-legend .loop-line { background: var(--coral); }
+
+        .chain { display: grid; grid-template-columns: repeat(5,1fr); gap: 13px; margin-top: 45px; }
+        .chain article { position: relative; padding: 25px; }
+        .chain b { display: block; margin-bottom: 24px; color: var(--coral); font: 500 38px Georgia,serif; }
+        .chain p { margin: 0; color: var(--muted); font-size: 13px; }
+
+        .screen-strip {
+            display: grid;
+            grid-auto-flow: column;
+            grid-auto-columns: minmax(230px, 285px);
+            gap: 16px;
+            overflow-x: auto;
+            margin-top: 38px;
+            padding: 4px 4px 20px;
+            scroll-snap-type: x proximity;
+        }
+
+        .screen-card {
+            margin: 0;
+            padding: 12px;
+            scroll-snap-align: start;
+        }
+
+        .screen-card img {
+            display: block;
+            width: 100%;
+            height: 560px;
+            object-fit: cover;
+            object-position: top;
+            border-radius: 19px;
+            background: var(--paper);
+        }
+
+        .screen-card figcaption {
+            padding: 14px 5px 5px;
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .screen-card strong {
+            display: block;
+            margin-bottom: 4px;
+            color: var(--ink);
+            font-size: 14px;
+        }
+
+        .game-overview-strip {
+            grid-auto-columns: clamp(310px, 25vw, 380px);
+        }
+
+        .game-overview-strip .screen-card img {
+            height: 620px;
+        }
+
+        .metric-note {
+            max-width: 920px;
+            margin: 22px 0 0;
+            color: var(--muted);
+            font-size: 11px;
+            line-height: 1.55;
+        }
+
+        .video-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 10px;
+            padding: 13px 19px;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            color: var(--ink);
+            background: var(--paper);
+            box-shadow: 0 10px 28px rgba(24, 50, 68, 0.08);
+            font-size: 13px;
+            font-weight: 850;
+            letter-spacing: .04em;
+            text-decoration: none;
+        }
+
+        .video-link::before {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            content: "";
+            background-color: var(--coral);
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 28 28' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 8.5L20 14L11 19.5Z' fill='white'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .video-link:hover,
+        .video-link:focus-visible {
+            border-color: var(--coral);
+            transform: translateY(-1px);
+        }
+
+        .scope-grid + .video-link {
+            margin-top: 28px;
+        }
+
+        #game h2 {
+            max-width: 1000px;
+        }
+
+        #game .lead {
+            max-width: 900px;
+        }
+
+        .scope-intro {
+            margin-top: 48px;
+            padding-top: 28px;
+            border-top: 1px solid var(--line);
+        }
+
+        .scope-intro .eyebrow {
+            margin-bottom: 14px;
+        }
+
+        .scope-intro h3 {
+            max-width: 620px;
+            margin: 0 0 14px;
+            font: 500 clamp(34px, 4.5vw, 62px)/1.02 Georgia, serif;
+            letter-spacing: -.035em;
+        }
+
+        .scope-intro p:not(.eyebrow) {
+            max-width: 760px;
+            margin: 0;
+            color: var(--muted);
+            font-size: 17px;
+        }
+
+        .scope-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 13px;
+            margin-top: 26px;
+        }
+
+        .scope-card {
+            min-height: 260px;
+            padding: 24px;
+            background: var(--paper);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+        }
+
+        .scope-card:nth-child(2) { background: #f0e8f3; }
+        .scope-card:nth-child(3) { background: #e4f2f3; }
+        .scope-card:nth-child(4) { background: #fff0d5; }
+
+        .scope-card span {
+            display: block;
+            margin-bottom: 18px;
+            color: var(--coral);
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+        }
+
+        .scope-card h3 {
+            margin-bottom: 12px;
+            font-size: 19px;
+        }
+
+        .scope-card p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.55;
+        }
+
+        .tracks { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; margin-top: 45px; }
+        .track { padding: 31px; border-top: 7px solid var(--track); }
+        .track small { color: var(--track); font-weight: 900; letter-spacing: .12em; text-transform: uppercase; }
+        .track strong { display: block; margin: 20px 0 10px; font: 500 40px Georgia,serif; }
+        .track ul { margin: 20px 0 0; padding-left: 18px; color: var(--muted); }
+        .track li { margin: 8px 0; }
+
+        .loot-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: 50px; align-items: center; margin-top: 45px; }
+        .loot-wheel {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 12px;
+        }
+
+        .loot {
+            display: grid;
+            place-items: center;
+            min-height: 130px;
+            padding: 18px;
+            border-radius: 24px;
+            color: var(--cream);
+            background: var(--loot);
+            text-align: center;
+            font-weight: 800;
+        }
+
+        .loot small { display: block; opacity: .7; font-weight: 600; }
+        .economy {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 16px;
+            margin-top: 35px;
+        }
+
+        .economy .card { padding: 30px; }
+        .economy strong { display: block; margin: 15px 0 6px; color: var(--coral); font: 500 43px Georgia,serif; }
+        .economy p { margin: 0; color: var(--muted); font-size: 14px; }
+
+        .party {
+            color: var(--cream);
+            background: var(--deep);
+        }
+
+        .party .eyebrow { color: var(--sun); }
+        .party .lead { color: rgba(255,255,255,.65); }
+        .party-grid { display: grid; grid-template-columns: minmax(0, .9fr) minmax(300px, 520px); gap: 60px; align-items: start; }
+
+        .reflection { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; margin-top: 42px; }
+        .reflection .card { padding: 30px; }
+        .reflection ul { margin: 18px 0 0; padding-left: 18px; color: var(--muted); }
+        .reflection li { margin: 10px 0; }
+        .good { border-top: 6px solid var(--mint); }
+        .risk { border-top: 6px solid var(--coral); }
+        .principle { border-top: 6px solid var(--sun); }
+
+        .closing { color: var(--cream); background: var(--night); }
+        .closing .eyebrow { color: var(--sun); }
+        .closing .lead { color: rgba(255,255,255,.65); }
+        .footer { position: absolute; right: max(7vw,90px); bottom: 28px; color: rgba(255,255,255,.4); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; }
+
+        @media (max-width: 900px) {
+            nav { display:none; }
+            .slide { min-height:auto; padding:90px 28px; }
+            .hero-grid, .loot-grid, .party-grid { grid-template-columns:1fr; }
+            .stat-grid, .tracks, .economy, .reflection, .scope-grid { grid-template-columns:repeat(2,1fr); }
+            .chain { grid-template-columns:1fr; }
+            .diagram-scroll { margin-right:-28px; padding-right:28px; }
+            .game-overview-strip { grid-auto-columns: minmax(290px, 44vw); }
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size:58px; }
+            h2 { font-size:44px; }
+            .stat-grid, .tracks, .economy, .reflection, .loot-wheel, .scope-grid { grid-template-columns:1fr; }
+            .game-overview-strip { grid-auto-columns: 84vw; }
+            .game-overview-strip .screen-card img { height: min(650px, 126vw); }
+        }
+
+        @media print {
+            nav,.progress { display:none; }
+            .slide { min-height:100vh; break-after:page; padding:55px; }
+        }
+    </style>
+    <link rel="stylesheet" href="case-study.css">
+</head>
+<body>
+    <header class="case-header">
+        <a class="case-wordmark" href="../../index.html" aria-label="Jarvinen Design home">
+            <span><img src="../../images/jd_logo_transparent.png" alt="" aria-hidden="true"></span>
+            <strong>Jarvinen Design</strong>
+        </a>
+        <div class="case-header-links">
+            <a href="../../index.html#work">All case studies</a>
+            <a href="#reflection">Reflection</a>
+        </div>
+        <a class="case-close" href="../../index.html#work" aria-label="Close case study">Close <span aria-hidden="true">×</span></a>
+    </header>
+    <div class="progress" aria-hidden="true"></div>
+    <nav class="chapter-nav" aria-label="Case study chapters">
+        <a href="#intro"><i></i><span>Intro</span></a>
+        <a href="#game"><i></i><span>The Game</span></a>
+        <a href="#ecosystem"><i></i><span>Ecosystem</span></a>
+        <a href="#activation"><i></i><span>Content Split</span></a>
+        <a href="#passes"><i></i><span>Relay</span></a>
+        <a href="#lootbox"><i></i><span>Store</span></a>
+        <a href="#party"><i></i><span>Support</span></a>
+        <a href="#service"><i></i><span>Service Comms</span></a>
+        <a href="#reflection"><i></i><span>Product Values</span></a>
+    </nav>
+
+    <main>
+        <section class="slide hero" id="intro">
+            <div class="content hero-grid">
+                <div>
+                    <p class="eyebrow">Moomin Move / Japan-only live service</p>
+                    <h1>Building the rhythm of a live game</h1>
+                    <p class="lead">I led and operated a Japan-only free-to-play service through seasonal planning, content delivery, economy tuning, monetization, partner coordination, and long-term product stewardship.</p>
+                    <div class="pills">
+                        <span class="pill">Japan-only product</span>
+                        <span class="pill">Persistent world</span>
+                        <span class="pill">Seasonal operations</span>
+                        <span class="pill">Live economy</span>
+                    </div>
+                </div>
+                <figure class="hero-illustration">
+                    <img src="../../images/moomin_illust1.jpg" alt="Moomin and Snufkin sitting by a campfire in Moominvalley">
+                </figure>
+            </div>
+        </section>
+
+        <section class="slide" id="game">
+            <div class="content">
+                <p class="eyebrow">00 / Japan live-service phase</p>
+                <h2>A Japan-only F2P live game built around seasonal economy</h2>
+                <p class="lead">During the focused Japan live-service phase, players explored the real-world map, progressed Moomin friends, collected pets and resources, cooked food, completed seasonal tasks, restored landmarks, and developed a personal valley.</p>
+                <div class="role-snapshot" aria-label="Role and delivery scope">
+                    <article><strong>4 years</strong><span>Focused Japan F2P leadership</span></article>
+                    <article><strong>30+</strong><span>Japan content updates managed</span></article>
+                    <article><strong>Japan</strong><span>Market-specific live service</span></article>
+                    <article><strong>Free → F2P</strong><span>Product transformation</span></article>
+                </div>
+                <p class="role-note">This case focuses on the final four-year Japan F2P phase: establishing a repeatable content cadence, managing 30+ content updates, coordinating external partners, evolving the economy from live performance and analytics analysis, supporting acquisition by a Japanese corporation, and remaining accountable through sunset. Earlier involvement with the product is background context; the Live Ops scope here is specifically the Japan live game.</p>
+                <div class="scope-intro impact-intro">
+                    <p class="eyebrow">Japan-only product impact</p>
+                    <h3>Strong retention supported deeper monetization.</h3>
+                    <p>LiveOps, reward, pass, and store improvements added monetization depth to an already strong Japanese retention base.</p>
+                </div>
+                <div class="stat-grid">
+                    <article class="card stat"><strong>200k+</strong><span>Downloads in Japan</span></article>
+                    <article class="card stat"><strong>3k-15k</strong><span>Japan daily active players across the product lifecycle</span></article>
+                    <article class="card stat"><strong>57%</strong><span>Japan Day 1 retention</span></article>
+                    <article class="card stat"><strong>31%</strong><span>Japan Day 7 retention</span></article>
+                </div>
+                <div class="economy">
+                    <article class="card"><h3>Japan ARPDAU uplift</h3><strong>+41%</strong><p>Improvement after later LiveOps, reward, and store updates.</p></article>
+                    <article class="card"><h3>Japan payer conversion</h3><strong>+33%</strong><p>Improvement after deepening passes, offers, cosmetics, keys, and utility products.</p></article>
+                    <article class="card"><h3>Operational LiveOps</h3><strong>Always on</strong><p>Maintenance planning, incident response, downtime communication, and player compensation for a persistent multiplayer world.</p></article>
+                </div>
+                <p class="metric-note"><strong>Context:</strong> These are directional Japan-only results from a relatively small player population, and represent the improved late-stage values reached after sustained iteration during the four-year Japan market period. The team did not have enough time, scale, or remaining production runway to validate the same performance globally, run extensive experimentation, or determine how the results would hold with a much larger audience.</p>
+                <div class="scope-intro">
+                    <p class="eyebrow">My LiveOps management scope</p>
+                    <h3>My role in keeping the live game moving.</h3>
+                    <p>I worked across planning, rewards, production coordination, operations, analytics, and stakeholder communication during the Japan live-service phase.</p>
+                </div>
+                <div class="scope-grid" aria-label="My Live Ops management responsibilities">
+                    <article class="scope-card">
+                        <span>Planning ownership</span>
+                        <h3>Season structure and economy planning</h3>
+                        <p>I planned relay tasks, task rewards, free and paid reward tracks, Super Premium value, seasonal store rotations, offers, and loot-box economy with the wider game loop in mind.</p>
+                    </article>
+                    <article class="scope-card">
+                        <span>Reward design</span>
+                        <h3>Seasonal reward and content planning</h3>
+                        <p>I shaped reward sets such as costumes, UI skins, icons, chat stickers, furniture, pets, tokens, Super Tokens, pet food, soap, Super Soap, rubies, and gold so they supported seasonal motivation and long-term progression.</p>
+                    </article>
+                    <article class="scope-card">
+                        <span>Production management</span>
+                        <h3>UI, art, story, store, and localization delivery</h3>
+                        <p>I oversaw relay UI and art planning, store text and image updates, story updates, English-to-Japanese translation flow, and social media image and communication needs.</p>
+                    </article>
+                    <article class="scope-card">
+                        <span>Live service operations</span>
+                        <h3>Service health, feedback, and stakeholder alignment</h3>
+                        <p>I co-managed update and maintenance emails, player compensation, incident and error handling, survey planning, analytics analysis, and communication with stakeholders and external partners.</p>
+                    </article>
+                </div>
+                <div class="scope-tags" aria-label="Detailed LiveOps tasks I was involved in">
+                    <span>Relay tasks</span>
+                    <span>Task rewards</span>
+                    <span>Free track</span>
+                    <span>Premium track</span>
+                    <span>Super Premium</span>
+                    <span>Season store planning</span>
+                    <span>Loot boxes</span>
+                    <span>Daily offers</span>
+                    <span>Weekly offers</span>
+                    <span>Chained offers</span>
+                    <span>Personal timed offers</span>
+                    <span>Seasonal gifts</span>
+                    <span>Countdown gifts</span>
+                    <span>Push messages</span>
+                    <span>In-game mails</span>
+                    <span>Maintenance comms</span>
+                    <span>Compensations</span>
+                    <span>Player support</span>
+                    <span>Incident handling</span>
+                    <span>Survey planning</span>
+                    <span>Analytics analysis</span>
+                    <span>Relay UI planning</span>
+                    <span>Store images</span>
+                    <span>App icons</span>
+                    <span>Loading screens</span>
+                    <span>Splash screens</span>
+                    <span>Task-list visuals</span>
+                    <span>Relay progress visuals</span>
+                    <span>Story updates</span>
+                    <span>ENG-JP translation flow</span>
+                    <span>Social media images</span>
+                    <span>Partner communication</span>
+                    <span>Stakeholder alignment</span>
+                </div>
+                <div class="media-intro">
+                    <p class="eyebrow">Game context</p>
+                    <h3>A quick look at the game behind the LiveOps work.</h3>
+                    <a class="video-link" href="https://youtu.be/wEp3v-TQVLw" target="_blank" rel="noopener noreferrer">Watch Moomin Move gameplay on YouTube</a>
+                </div>
+                <div class="screen-strip game-overview-strip" aria-label="Moomin Move gameplay overview">
+                    <figure class="card screen-card">
+                        <img loading="lazy" src="../../images/moominmove_map_a.png" alt="Moomin Move image showing walking and exploration on the world map">
+                        <figcaption><strong>Walking &amp; discovery</strong>Explore the real-world map to encounter characters, pets, collectibles, and seasonal objects.</figcaption>
+                    </figure>
+                    <figure class="card screen-card">
+                        <img loading="lazy" src="../../images/moominmove_valley_b.png" alt="Moomin Move image showing the player's personal valley">
+                        <figcaption><strong>Personal valley</strong>Build, decorate, and seasonally transform a persistent personal space.</figcaption>
+                    </figure>
+                    <figure class="card screen-card">
+                        <img loading="lazy" src="../../images/moominmove_pets_c.png" alt="Moomin Move image showing pets and collection">
+                        <figcaption><strong>Pets &amp; collection</strong>Collect and progress pets that support both active and AFK play strategies.</figcaption>
+                    </figure>
+                    <figure class="card screen-card">
+                        <img loading="lazy" src="../../images/moominmove_cooking_d.png" alt="Moomin Move image showing cooking and food progression">
+                        <figcaption><strong>Cooking &amp; gifting</strong>Turn collected ingredients into food for tasks, progression, and friendship gifting.</figcaption>
+                    </figure>
+                    <figure class="card screen-card">
+                        <img loading="lazy" src="../../images/moominmove_teams_e.png" alt="Moomin Move image showing teams and shared goals">
+                        <figcaption><strong>Teams &amp; shared goals</strong>Work with other players through team progress, contribution, and social motivation.</figcaption>
+                    </figure>
+                    <figure class="card screen-card">
+                        <img loading="lazy" src="../../images/moominmove_walk_f.png" alt="Moomin Move image showing walking progress">
+                        <figcaption><strong>Walking progress</strong>Real-world movement supports personal progression, team goals, and seasonal play.</figcaption>
+                    </figure>
+                    <figure class="card screen-card">
+                        <img loading="lazy" src="../../images/moominmove_stories_h.png" alt="Moomin Move image showing character stories and quests">
+                        <figcaption><strong>Character stories</strong>Quests connect Moomin friends, themed adventures, rewards, and long-term progression.</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <section class="slide" id="ecosystem">
+            <div class="content">
+                <p class="eyebrow">01 / Operating model</p>
+                <h2>A monthly season activated the whole game</h2>
+                <p class="lead">The monthly Season Relay was the central LiveOps force. It created goals across walking and collecting, pets, cooking, map tools, range boosters, social play, and the store, then returned rewards into those systems. Player screen time consistently spiked during active seasons compared with periods without one.</p>
+                <div class="diagram-scroll">
+                    <figure class="activation-image">
+                        <img src="../../images/liveops_seasonal_activation.png" alt="Seasonal Relay Event activation diagram showing how Live Ops connected relay tasks, cooking, shop, pets, exploration, base building, friendships, and supporting systems." loading="lazy">
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <section class="slide" id="activation">
+            <div class="content">
+                <p class="eyebrow">02 / Season content split</p>
+                <h2>New content was divided across free play, paid tracks, and store routes</h2>
+                <p class="lead">Each season needed a clear split: free rewards for participation, paid rewards for higher value and acceleration, and shop content for repeatable seasonal spending. Every relay level required 50 points, with 30 unique reward levels in the main track and 10 instant extra levels available through Super Premium.</p>
+                <div class="tracks season-split">
+                    <article class="card track" style="--track:var(--mint); --trackText:#4f8f66;">
+                        <small>Free rewards</small><strong>Tasks + free track</strong>
+                        <p>Daily relay tasks and the free progression track gave active players base resources, keys, tokens, seasonal utility, special seasonal gifts, and accessible identity rewards.</p>
+                    </article>
+                    <article class="card track" style="--track:var(--sun); --trackText:#a36f10;">
+                        <small>Premium / Super Premium</small><strong>Paid reward tracks</strong>
+                        <p>Premium increased reward density, while Super Premium added prestige rewards and 500 instant event points: enough for 10 relay levels.</p>
+                    </article>
+                    <article class="card track" style="--track:var(--coral); --trackText:#c24f42;">
+                        <small>Shop content</small><strong>Loot boxes + offers</strong>
+                        <p>Seasonal loot boxes, timed offers, bundles, and store images created the commercial layer around the season's exclusive content.</p>
+                    </article>
+                </div>
+                <div class="season-mechanics">
+                    <article><strong>30</strong><span>unique main reward levels</span></article>
+                    <article><strong>50</strong><span>points required per level</span></article>
+                    <article><strong>Daily</strong><span>task reset cadence</span></article>
+                    <article><strong>Rubies</strong><span>could refresh tasks faster</span></article>
+                </div>
+                <div class="screen-strip" aria-label="Activation system examples">
+                    <figure class="card screen-card">
+                        <img loading="lazy" src="../../images/winter_season_valley.png" alt="Moomin Move winter season valley with seasonal decorations and custom items">
+                        <figcaption><strong>Seasonal valley</strong>Season-specific furniture and custom items helped the player's personal space visibly change with the event.</figcaption>
+                    </figure>
+                    <figure class="card screen-card">
+                        <img loading="lazy" src="relay-reward-track.jpg" alt="Japanese relay reward progression track with free and premium columns">
+                        <figcaption><strong>Reward tracks</strong>Free and Premium rewards were shown together so the upgrade value stayed visible.</figcaption>
+                    </figure>
+                    <figure class="card screen-card">
+                        <img loading="lazy" src="store-seasonal-lootbox.jpg" alt="Japanese store showing a winter seasonal loot box priced for one or ten openings">
+                        <figcaption><strong>Seasonal loot boxes</strong>The store layer carried themed rewards, repeat openings, and guaranteed value.</figcaption>
+                    </figure>
+                    <figure class="card screen-card">
+                        <img loading="lazy" src="team-quest-board.png" alt="Moomin Move team quest board showing a monthly countdown, team rank, shared quest progress, and rewards">
+                        <figcaption><strong>Supporting tasks</strong>Team, party, and global goals added parallel reasons to participate during the season.</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <section class="slide" id="passes">
+            <div class="content">
+                <p class="eyebrow">03 / Season activation loop</p>
+                <h2>Relay event tasks turned the season into full-game activation</h2>
+                <p class="lead">A new season gave players a reason to touch the whole game again: basic tasks, shop visits, cooking, map exploration, global challenges, team goals, valley decoration, social identity rewards, and premium progression. The result was a multi-layered customization and play loop that supported long-term retention and monetization.</p>
+                <div class="chain">
+                    <article class="card"><b>Goal gradient</b><h3>30-day track</h3><p>A full-month reward path gave players something to complete every day.</p></article>
+                    <article class="card"><b>Autonomy</b><h3>Many speed paths</h3><p>Play more, reset tasks, use pets and boosters, upgrade kitchens, or buy 10 instant levels.</p></article>
+                    <article class="card"><b>Identity</b><h3>Season show-off</h3><p>Icons, stickers, costumes, pets, and furniture gave social value.</p></article>
+                    <article class="card"><b>Urgency</b><h3>Timed choices</h3><p>Daily resets and limited rewards created pressure without letting players simply buy out everything.</p></article>
+                    <article class="card"><b>Retention</b><h3>Progress feeds back</h3><p>Rewards returned into friendships, teams, collections, valley, and the next session.</p></article>
+                </div>
+                <div class="screen-strip" aria-label="Relay task and reward examples">
+                    <figure class="card screen-card">
+                        <img loading="lazy" src="relay-task-example.jpg" alt="Japanese holiday relay task screen showing ingredient collection, cooking objectives, event points, a daily refresh timer, and a 12-ruby task refresh">
+                        <figcaption><strong>Task refresh model</strong>Ingredient and food goals awarded event points, while the timer and ruby refresh supported both daily return and optional acceleration.</figcaption>
+                    </figure>
+                    <figure class="card screen-card">
+                        <img loading="lazy" src="cooking-seasonal-food.jpg" alt="Japanese cooking screen preparing seasonal mulled wine">
+                        <figcaption><strong>Seasonal cooking</strong>Food demand increased the value of ingredients, upgraded pots, cooking spaces, timer skips, pet gathering, and booster routes.</figcaption>
+                    </figure>
+                    <figure class="card screen-card">
+                        <img loading="lazy" src="walking-step-collection.jpg" alt="Walking step-ball collection screen with daily step progress and step boost">
+                        <figcaption><strong>Walking collection theme</strong>Super Premium could include custom themed skins for the walking bubble collection view, adding seasonal customization value for the Japanese market.</figcaption>
+                    </figure>
+                    <figure class="card screen-card">
+                        <img loading="lazy" src="seasonal-character-quest.jpg" alt="Seasonal character quest requesting an item and showing parcel character-token and XP rewards">
+                        <figcaption><strong>Friendship progression</strong>Gifting and character quests built relationships that unlocked parcels, recipes, furniture, and stronger friend support.</figcaption>
+                    </figure>
+                </div>
+                <div class="scope-intro">
+                    <p class="eyebrow">Pass design</p>
+                    <h3>Premium and Super Premium turned participation into clearer value tiers.</h3>
+                    <p>The free track kept the season accessible, Premium increased reward density, and Super Premium added acceleration plus exclusive identity rewards.</p>
+                </div>
+                <div class="tracks">
+                    <article class="card track" style="--track:var(--mint); --trackText:#4f8f66;">
+                        <small>Free</small><strong>Belong to the season</strong>
+                        <ul><li>Useful currencies and summon keys</li><li>Exclusive sticker</li><li>Accessible lower-rarity costume</li><li>Repeatable relay loot boxes</li></ul>
+                    </article>
+                    <article class="card track" style="--track:var(--sun); --trackText:#a36f10;">
+                        <small>Premium</small><strong>Increase reward density</strong>
+                        <ul><li>Character tokens and keys</li><li>Exclusive icons and sticker</li><li>Higher-rarity costume potential</li><li>More high-value resources</li></ul>
+                    </article>
+                    <article class="card track" style="--track:var(--coral); --trackText:#c24f42;">
+                        <small>Super Premium</small><strong>Accelerate and stand out</strong>
+                        <ul><li>Premium-track access included</li><li>Super-Premium-only icon and pet</li><li>Walking-menu background</li><li>500 instant event points</li></ul>
+                    </article>
+                </div>
+                <div class="screen-strip" aria-label="Relay reward and pass examples">
+                    <figure class="card screen-card">
+                        <img loading="lazy" src="relay-reward-track.jpg" alt="Japanese relay reward progression track with free and premium columns">
+                        <figcaption><strong>Relay reward track</strong>Free and Premium rewards remain visible together across each event level.</figcaption>
+                    </figure>
+                    <figure class="card screen-card">
+                        <img loading="lazy" src="pass-selection.jpg" alt="Japanese Premium and Super Premium pass purchase selection">
+                        <figcaption><strong>Two paid choices</strong>Premium sells reward density; Super Premium includes it and adds ten instant levels plus prestige rewards.</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <section class="slide" id="lootbox">
+            <div class="content">
+                <p class="eyebrow">04 / Store, loot boxes, and offers</p>
+                <h2>The store lived with the season</h2>
+                <p class="lead">Every season, the store carried themed packages wrapped in culturally appropriate color, value, and event themes: season-specific loot boxes, daily and weekly offers, chained offers, and personal timed special offers. Seasonal loot boxes also included items that directly supported the relay event, alongside cosmetic and long-term utility rewards.</p>
+                <div class="loot-grid">
+                    <div class="loot-wheel">
+                        <div class="loot" style="--loot:var(--coral)">Ingredients<small>Progress and cooking</small></div>
+                        <div class="loot" style="--loot:var(--sun)">Foods<small>Progress and friendships</small></div>
+                        <div class="loot" style="--loot:var(--mint)">Furniture<small>Valley decor and party</small></div>
+                        <div class="loot" style="--loot:var(--sky)">Grooming<small>Pet efficiency</small></div>
+                        <div class="loot" style="--loot:var(--plum)">Pet food<small>Pet progress</small></div>
+                        <div class="loot" style="--loot:var(--deep)">Costumes<small>Season special content and efficiency</small></div>
+                    </div>
+                    <div>
+                        <h3>Seasonal loot box contents</h3>
+                        <p class="lead">The chest mixed immediate relay-event help with longer-term collection, decoration, pet care, and identity value. Seasonal events could also use visible free gift moments, such as a Christmas three-day countdown lootbox gift.</p>
+                        <div class="economy">
+                            <article class="card"><strong>30</strong><p>rubies for one opening</p></article>
+                            <article class="card"><strong>270</strong><p>rubies for ten openings</p></article>
+                            <article class="card"><strong>45</strong><p>openings for the guarantee</p></article>
+                        </div>
+                    </div>
+                </div>
+                <div class="screen-strip" aria-label="Store, loot box, and offer examples">
+                    <figure class="card screen-card">
+                        <img loading="lazy" src="offers-seasonal-japan.jpg" alt="Japanese New Year seasonal lucky bag and lucky bundle offers">
+                        <figcaption><strong>Japanese seasonal style</strong>New Year art and culturally relevant packaging supported timed regional offers.</figcaption>
+                    </figure>
+                    <figure class="card screen-card">
+                        <img loading="lazy" src="store-seasonal-lootbox.jpg" alt="Japanese store showing a winter seasonal loot box priced for one or ten openings">
+                        <figcaption><strong>Seasonal loot box</strong>A themed repeatable ruby sink with single and ten-opening price points, supported by moments like a free three-day Christmas countdown gift.</figcaption>
+                    </figure>
+                    <figure class="card screen-card">
+                        <img loading="lazy" src="offer-new-player.jpg" alt="Japanese timed new-player personal offer">
+                        <figcaption><strong>Personal timed offer</strong>A low-entry onboarding bundle matched price, content, and urgency to a new player.</figcaption>
+                    </figure>
+                    <figure class="card screen-card">
+                        <img loading="lazy" src="offer-large-timed.jpg" alt="Japanese high-value timed booster bundle priced for a large spender">
+                        <figcaption><strong>High-value spender offer</strong>A short-duration large bundle created a distinct price point for high-intent players.</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <section class="slide party" id="party">
+            <div class="content party-grid">
+                <div>
+                    <p class="eyebrow">05 / Supporting season content</p>
+                    <h2>Supporting game systems gave the season more ways to matter</h2>
+                    <p class="lead">Beyond the core relay and store, seasonal support systems added social comparison, team contribution, exclusive identity, decoration goals, team competition, and leaderboards. They made the season visible in more places than the reward track alone.</p>
+                </div>
+                <figure class="season-art">
+                    <img loading="lazy" src="../../images/winter_sports (3).png" alt="Winter sports themed Moomin Move seasonal artwork">
+                    <figcaption><strong>Seasonal theme</strong>Visual themes helped each season feel like a distinct event across gameplay, rewards, and communication.</figcaption>
+                </figure>
+            </div>
+            <div class="content">
+                <div class="economy">
+                    <article class="card"><h3>Team board</h3><strong>Contribution</strong><p>Team progress and team-specific tasks rewarded active seasonal play, while leader-style visibility gave successful players status inside the group.</p></article>
+                    <article class="card"><h3>Party Mode</h3><strong>Efficiency</strong><p>Acquiring and using seasonal items improved gifting performance, which helped players progress friendships faster.</p></article>
+                    <article class="card"><h3>Collecting events</h3><strong>Competition</strong><p>Global cooking and collecting challenges let players compete beyond their own progression and made the season feel larger.</p></article>
+                    <article class="card"><h3>Valley decoration</h3><strong>Expression</strong><p>Seasonal decoration goals and social voting turned player valleys into themed showcases.</p></article>
+                    <article class="card"><h3>New friends + costumes</h3><strong>Collection</strong><p>Seasonal characters, pets, and costumes created fresh collection goals and reasons to return.</p></article>
+                    <article class="card"><h3>Icons + chat stickers</h3><strong>Identity</strong><p>Small exclusive social rewards gave players seasonal show-off value in communication and profiles.</p></article>
+                </div>
+                <div class="screen-strip" aria-label="Party Mode and valley progression examples">
+                    <figure class="card screen-card">
+                        <img loading="lazy" src="party-mode-active.jpg" alt="Active Valley Party screen showing furniture tasks, Party Stars, five bonus levels, and a level two 40 percent friendship gifting bonus">
+                        <figcaption><strong>Active Party Mode</strong>Furniture tasks award Party Stars. Stars unlock higher party levels, and the active level sets the friendship bonus from gifts; this level-two party gives +40%.</figcaption>
+                    </figure>
+                    <figure class="card screen-card">
+                        <img loading="lazy" src="valley-tutorial.jpg" alt="Early tutorial valley with Moominhouse and initial restoration task">
+                        <figcaption><strong>Tutorial valley</strong>The personal space begins as a focused restoration and onboarding environment.</figcaption>
+                    </figure>
+                    <figure class="card screen-card">
+                        <img loading="lazy" src="valley-winter-season.jpg" alt="Developed personal valley decorated with winter seasonal content and visiting characters">
+                        <figcaption><strong>Seasonal winter valley</strong>Long-term building, seasonal furniture, visitors, and identity transform the same space.</figcaption>
+                    </figure>
+                    <figure class="card screen-card">
+                        <img loading="lazy" src="team-quest-board.png" alt="Moomin Move team quest board showing a monthly countdown, team rank, shared quest progress, and rewards">
+                        <figcaption><strong>Team quest board</strong>A shared monthly board could reinforce relay cadence, gifting, and social contribution goals.</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <section class="slide" id="service">
+            <div class="content">
+                <p class="eyebrow">06 / Live service communication</p>
+                <h2>Operations kept the season understandable and trusted</h2>
+                <p class="lead">A live season also needed clear communication outside the core feature loop: push messages, season information, maintenance notices, compensation, player support, and feedback collection.</p>
+                <div class="economy">
+                    <article class="card"><h3>Season communication</h3><strong>Clarity</strong><p>Push messages and season information helped players understand what was active, what was new, and why to return.</p></article>
+                    <article class="card"><h3>Season presentation</h3><strong>Visibility</strong><p>App icons, loading screens, splash screens, in-game relay event icons, task-list visuals, and relay progress screens changed so the season was visible across the full player journey.</p></article>
+                    <article class="card"><h3>Seasonal gifts</h3><strong>Delight</strong><p>Season-specific gifts were planned around moments such as Christmas, including countdown gifts leading toward the holiday.</p></article>
+                    <article class="card"><h3>Maintenance and incidents</h3><strong>Trust</strong><p>Maintenance communication, in-game mails, issue handling, and compensation delivery reduced frustration when live service problems affected play.</p></article>
+                    <article class="card"><h3>Player support</h3><strong>Care</strong><p>Support coordination kept player problems visible and helped the team respond to issues around updates, rewards, and events.</p></article>
+                    <article class="card"><h3>Feedback collecting</h3><strong>Learning</strong><p>Surveys, feedback, and community signals informed prioritization, live tuning, and future season planning.</p></article>
+                </div>
+                <figure class="season-icon-example">
+                    <img loading="lazy" src="../../images/512gameicon_winter_android.png" alt="Winter seasonal Moomin Move app icon with Moomintroll and Little My">
+                    <figcaption><strong>Seasonal app icon</strong>One example of how the live season appeared before players even opened the game.</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section class="slide" id="reflection">
+            <div class="content">
+                <p class="eyebrow">07 / Product values and retention</p>
+                <h2>A gentle live game worked because progress felt meaningful</h2>
+                <p class="lead">The core fantasy was not fighting. Players helped Moomins, improved the world, cared for their own environment, and helped themselves through walking. LiveOps worked best when it amplified those values instead of replacing them with pure reward chasing.</p>
+                <div class="economy">
+                    <article class="card"><h3>Gentle purpose</h3><strong>Help</strong><p>No combat: players helped Moomins, restored places, improved their valley, and made the world feel better.</p></article>
+                    <article class="card"><h3>Beloved IP connection</h3><strong>Care</strong><p>Season content, stories, quests, and rewards were crafted to feel true to the characters and world players already loved.</p></article>
+                    <article class="card"><h3>Walking with meaning</h3><strong>Move</strong><p>Real walking advanced personal progress, team goals, and in-game systems, supported by a friendly walking coach and feel-good messages.</p></article>
+                    <article class="card"><h3>Many player identities</h3><strong>Choose</strong><p>The game supported collectors, explorers, builders, caretakers, team players, and social players through different reward paths.</p></article>
+                    <article class="card"><h3>Social circles</h3><strong>Belong</strong><p>Teams could become meaningful communities, giving players social reasons to return that were difficult to create through rewards alone.</p></article>
+                    <article class="card"><h3>Long progression depth</h3><strong>Grow</strong><p>Progression stretched from gentle onboarding to advanced upgrades, premium pets, costumes, furniture, friendships, and super-token systems.</p></article>
+                </div>
+                <div class="reflection">
+                    <article class="card good"><h3>LiveOps matched the fantasy</h3><ul><li>Season tasks activated walking, cooking, collecting, gifting, valley building, teams, and pets</li><li>Rewards felt useful because they fed care, expression, collection, friendship, and future play</li><li>Seasonal icons, stickers, costumes, furniture, pets, and backgrounds made each month feel socially present</li><li>Character quests and dialogue helped Moomin friends feel more personal as relationships grew</li></ul></article>
+                    <article class="card risk"><h3>Retention came from multiple meanings</h3><ul><li>Collectors had new items, pets, costumes, recipes, and seasonal content</li><li>Explorers and walkers had map goals and step-based progress</li><li>Builders and caretakers had valley, pet, friendship, and party goals</li><li>Friendships changed quests, dialogue, unlocks, and parcel help for lighthouse progression</li><li>Team players had shared progress, leaderboards, and social recognition</li></ul></article>
+                    <article class="card principle"><h3>Monetization supported chosen play</h3><ul><li>The system did not ask every player to value the same thing</li><li>Convenience helped time-limited players keep up with the season</li><li>Identity, collection depth, care, and social status created different reasons to spend</li><li>Acceleration worked best when it supported the play style a player already cared about</li></ul></article>
+                </div>
+            </div>
+        </section>
+
+        <section class="slide closing">
+            <div class="content">
+                <p class="eyebrow">Outcome</p>
+                <h2>A live game needs a rhythm the team can deliver and players can anticipate.</h2>
+                <p class="lead">The operating model connected content planning, production constraints, player behavior, economy decisions, commercial goals, partner communication, and service responsibility, while still protecting the gentle social fantasy that made players want to return.</p>
+                <div class="pills"><span class="pill">Live Ops leadership</span><span class="pill">Content cadence</span><span class="pill">Economy tuning</span><span class="pill">Partner coordination</span></div>
+            </div>
+            <div class="footer">LiveOps ecosystem case study</div>
+        </section>
+    </main>
+
+    <script>
+        const progress = document.querySelector(".progress");
+        const sections = [...document.querySelectorAll("section[id]")];
+        const links = [...document.querySelectorAll("nav a")];
+        const update = () => {
+            const height = document.documentElement.scrollHeight - innerHeight;
+            progress.style.width = `${height > 0 ? scrollY / height * 100 : 0}%`;
+            let active = sections[0]?.id;
+            for (const section of sections) {
+                if (section.getBoundingClientRect().top <= innerHeight * .45) active = section.id;
+            }
+            links.forEach(link => link.classList.toggle("active", link.hash === `#${active}`));
+        };
+        addEventListener("scroll", update, { passive:true });
+        addEventListener("resize", update);
+        update();
+    </script>
+</body>
+</html>
