@@ -1689,6 +1689,11 @@ button {
     align-items: end;
   }
 
+  .portrait-label {
+    right: auto;
+    left: 14px;
+  }
+
   .impact-grid,
   .impact-intro,
   .section-heading,
