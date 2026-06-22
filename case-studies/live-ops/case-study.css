@@ -703,6 +703,41 @@ h3 {
   align-items: start;
 }
 
+.location-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(320px, 520px);
+  gap: clamp(34px, 6vw, 78px);
+  align-items: center;
+}
+
+.location-art {
+  overflow: hidden;
+  margin: 0;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.location-art img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1.46;
+  object-fit: cover;
+}
+
+.location-art figcaption {
+  padding: 16px 18px 18px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.location-art strong {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--ink);
+}
+
 .party .economy h3 {
   color: var(--coral);
 }
@@ -848,7 +883,8 @@ h3 {
 
   .hero-grid,
   .loot-grid,
-  .party-grid {
+  .party-grid,
+  .location-grid {
     grid-template-columns: 1fr;
   }
 

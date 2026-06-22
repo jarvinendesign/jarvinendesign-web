@@ -651,11 +651,10 @@
     <nav class="rail chapter-nav" aria-label="Case study chapters">
         <a href="#intro"><i></i><span>Intro</span></a>
         <a href="#fit"><i></i><span>Problem</span></a>
-        <a href="#outcome"><i></i><span>Response</span></a>
-        <a href="#actions"><i></i><span>Math</span></a>
+        <a href="#actions"><i></i><span>Response</span></a>
         <a href="#identity"><i></i><span>Roles</span></a>
         <a href="#progression"><i></i><span>Pet Food</span></a>
-        <a href="#evolution"><i></i><span>Duplicates</span></a>
+        <a href="#evolution"><i></i><span>Evolution</span></a>
         <a href="#care"><i></i><span>Care</span></a>
         <a href="#economy"><i></i><span>Economy</span></a>
         <a href="#reflection"><i></i><span>Reflection</span></a>
@@ -673,8 +672,6 @@
                         <span class="pill">4 AFK modes</span>
                         <span class="pill">60 progression levels</span>
                         <span class="pill">5 evolution gates</span>
-                        <span class="pill">4 active slots</span>
-                        <span class="pill">Pet Food / Soap / Super Soap</span>
                     </div>
                     <div class="story-spine reveal" aria-label="Case study structure">
                         <span><b>Challenge</b> A quest- and task-heavy game needed an AFK layer for advanced players.</span>
@@ -693,7 +690,7 @@
                 <div class="reveal">
                     <p class="eyebrow">01 / Problem</p>
                     <h2>A quest- and task-heavy game needed an AFK layer for advanced players</h2>
-                    <p class="lead">Walking, cooking, quests, teams, collections, and seasonal goals already gave players plenty to do. The pet system had to add progression and monetization depth while giving players more freedom from constant tapping and minigame maintenance.</p>
+                    <p class="lead">The daily loop was already full: walking, cooking, quests, teams, seasonal goals. Pets had to add progression and monetization depth while giving advanced players relief from constant tapping.</p>
                 </div>
                 <div class="case-brief">
                     <article class="brief-card reveal">
@@ -715,32 +712,46 @@
             </div>
         </section>
 
-        <section class="slide" id="outcome">
-            <div class="content">
-                <div class="reveal">
-                    <p class="eyebrow">02 / Design response</p>
-                    <h2>A pet companion system players could use as AFK helpers</h2>
-                    <p class="lead">The companion system was built to support the game’s core loop and feed into core progression: teams, quests, and seasonal events. Pets gave players a sense of progression and advancement, while helping especially with team quests that became much more demanding at higher levels.</p>
-                </div>
-            </div>
-        </section>
-
         <section class="slide" id="actions">
             <div class="content">
                 <div class="reveal">
-                    <p class="eyebrow">03 / System proof</p>
-                    <h2>Implemented pet system in depth</h2>
-                    <p class="lead">Players chose what each active pet should work on. Pets then ran predictable 10-minute AFK cycles, stored progress while the player was away, and converted mood speed, level base stat, species multipliers, and evolution bonuses into practical rewards.</p>
+                    <p class="eyebrow">02 / Design response</p>
+                    <h2>Helpers woven into the Moominvalley story</h2>
+                    <p class="lead">Pets were written into the IP and its feel-good mood: the player cares for them, and the pets help the player back. Each pet runs one of four AFK jobs tied to a core gameplay loop, then banks rewards the player claims on return.</p>
+                </div>
+                <div class="action-flow reveal" aria-label="The AFK pet loop">
+                    <div><b>Step 01</b><span>Assign pets to a job</span></div>
+                    <div><b>Step 02</b><span>Run 10-minute actions</span></div>
+                    <div><b>Step 03</b><span>Bank rewards offline</span></div>
+                    <div><b>Step 04</b><span>Claim them on return</span></div>
                 </div>
                 <div class="stat-grid">
                     <article class="card stat reveal"><strong>10m</strong><span>One AFK action cycle</span></article>
                     <article class="card stat reveal"><strong>144</strong><span>Maximum stored action cycles</span></article>
                     <article class="card stat reveal"><strong>24h</strong><span>Maximum offline accumulation</span></article>
-                    <article class="card stat reveal"><strong>4</strong><span>Pets could support the player simultaneously</span></article>
+                    <article class="card stat reveal"><strong>4</strong><span>Active pet slots at once</span></article>
                 </div>
-                <div class="proof-note reveal proof-note-compact">
-                    <span>Output formulas</span>
-                    <p>The hidden system converted pet identity, level investment, and evolution bonuses into concrete output values.</p>
+                <div class="note-head reveal">
+                    <h3>Design intent</h3>
+                    <p>The bag caps and split collection rates were deliberate friction, sized so pets supported the core game without replacing it, while pulling on three player habits.</p>
+                </div>
+                <div class="mechanic-grid reveal">
+                    <article class="card">
+                        <h3>Claim often</h3>
+                        <p>Output stopped accruing once a bag filled, so rewards waited until the player returned, turning claiming into a frequent habit.</p>
+                    </article>
+                    <article class="card">
+                        <h3>Level up pets</h3>
+                        <p>Bag caps and base stats both rose with level, so spending Pet Food unlocked bigger stores and higher output at once.</p>
+                    </article>
+                    <article class="card">
+                        <h3>Run every element</h3>
+                        <p>Rates were split across the four roles, so a full team of specialised pets out-earned a single maxed favourite.</p>
+                    </article>
+                </div>
+                <div class="note-head reveal">
+                    <h3>Under the hood</h3>
+                    <p>Beneath the simple “send a pet to work” action, a hidden formula turned species, level, and evolution into the actual output. This was the balancing layer behind every reward, restriction, and monetization surface that follows.</p>
                 </div>
                 <div class="formula-board reveal" aria-label="Pet system formulas">
                     <article>
@@ -764,30 +775,13 @@
                         <code>ingredient chance = (Ingredients skill x rarity factor) / 100</code>
                     </article>
                 </div>
-                <div class="proof-note reveal proof-note-compact">
-                    <span>Example output</span>
-                    <p>A single pet could have different economic meanings depending on which output mode the player selected.</p>
-                </div>
-                <div class="example-pet card reveal">
-                    <div>
-                        <p class="eyebrow">Example pet / Parrot at level 60</p>
-                        <h3>One pet becomes four different economic outputs</h3>
-                        <p>Using the level-60 base stat of 1,082 with no evolution bonus, the Parrot becomes strongest in Gold and Ingredients. The useful part is not the hidden stat number itself, but what it turns into during 10-minute AFK cycles.</p>
-                    </div>
-                    <div class="example-stats" aria-label="Parrot level 60 example stats">
-                        <span>Gold</span><b>34.6</b><small>gold per 10-minute action, capped by a 3,116 coin bag</small>
-                        <span>Ingredients</span><b>65%</b><small>common ingredient roll chance per action, capped by a 25 item bag</small>
-                        <span>Tickets</span><b>37</b><small>tickets across a full 24-hour AFK window before storage limits</small>
-                        <span>Treasure</span><b>1.6%</b><small>5-star treasure roll chance per action before mood or evolution bonuses</small>
-                    </div>
-                </div>
             </div>
         </section>
 
         <section class="slide" id="identity">
             <div class="content">
                 <div class="reveal">
-                    <p class="eyebrow">04 / Role data</p>
+                    <p class="eyebrow">03 / Role data</p>
                     <h2>Pet roles and action profiles</h2>
                     <p class="lead">Four collection skills mapped directly to four AFK outputs, making the pet collection itself a toolbox. Multiple pets stayed useful because different loops needed different helpers.</p>
                 </div>
@@ -805,18 +799,6 @@
                     <article class="card role reveal" style="--role-color: var(--sky)">
                         <div class="icon"><img src="../../images/map_icon_valleyticket.png" alt="Tickets icon" /></div><strong>Tickets</strong><p>Progression and utility support</p>
                     </article>
-                </div>
-                <div class="specialists">
-                    <div class="reveal">
-                        <h3>Role specialists</h3>
-                        <p class="lead">The strongest examples create clear collection goals without making every pet interchangeable.</p>
-                    </div>
-                    <div class="pet-list reveal">
-                        <div class="pet-row"><span>Hattifattener / Treasure</span><div class="bar"><i style="--width:100%;--color:var(--berry)"></i></div><b>2.0</b></div>
-                        <div class="pet-row"><span>Rabbit / Ingredients</span><div class="bar"><i style="--width:80%;--color:var(--moss)"></i></div><b>1.6</b></div>
-                        <div class="pet-row"><span>Sakura Dragon / Gold</span><div class="bar"><i style="--width:90%;--color:var(--gold)"></i></div><b>1.8</b></div>
-                        <div class="pet-row"><span>Crawly / Tickets</span><div class="bar"><i style="--width:90%;--color:var(--sky)"></i></div><b>1.8</b></div>
-                    </div>
                 </div>
                 <div class="data-panel reveal">
                     <div class="data-panel-header">
@@ -853,13 +835,59 @@
                         </table>
                     </div>
                 </div>
+                <div class="example-pet card reveal">
+                    <div class="example-pet-main">
+                        <div class="example-pet-head">
+                            <p class="eyebrow">Worked example / Parrot at level 60</p>
+                            <h3>One pet, four economic outputs</h3>
+                            <p>Run the Parrot's row above through the formulas with the level-60 base stat of 1,082 and no evolution bonus. The same pet reads very differently depending on the job it is sent to.</p>
+                        </div>
+                        <div class="example-outputs" aria-label="Parrot level 60 example outputs">
+                            <article style="--out: var(--gold)">
+                                <span class="out-icon"><img src="../../images/map_icon_coin.png" alt="" aria-hidden="true"></span>
+                                <div class="out-body">
+                                    <span class="out-role">Gold</span>
+                                    <small>per action · 3,116 coin bag cap</small>
+                                </div>
+                                <b>34.6</b>
+                            </article>
+                            <article style="--out: var(--moss)">
+                                <span class="out-icon"><img src="../../images/map_icon_ingredients.png" alt="" aria-hidden="true"></span>
+                                <div class="out-body">
+                                    <span class="out-role">Ingredients</span>
+                                    <small>common roll / action · 25 item bag</small>
+                                </div>
+                                <b>65%</b>
+                            </article>
+                            <article style="--out: var(--berry)">
+                                <span class="out-icon"><img src="../../images/map_icon_treasure_chest.png" alt="" aria-hidden="true"></span>
+                                <div class="out-body">
+                                    <span class="out-role">Treasure</span>
+                                    <small>common roll / action</small>
+                                </div>
+                                <b>32%</b>
+                            </article>
+                            <article style="--out: var(--sky)">
+                                <span class="out-icon"><img src="../../images/map_icon_valleyticket.png" alt="" aria-hidden="true"></span>
+                                <div class="out-body">
+                                    <span class="out-role">Tickets</span>
+                                    <small>per action · 62 ticket bag cap</small>
+                                </div>
+                                <b>0.26</b>
+                            </article>
+                        </div>
+                    </div>
+                    <div class="example-pet-art" aria-hidden="true">
+                        <img src="../../images/parrot_hd2.png" alt="Parrot pet artwork">
+                    </div>
+                </div>
             </div>
         </section>
 
         <section class="slide" id="progression">
             <div class="content">
                 <div class="reveal">
-                    <p class="eyebrow">05 / Progression economy</p>
+                    <p class="eyebrow">04 / Progression economy</p>
                     <h2>Pet Food carried the long-tail sink</h2>
                     <p class="lead">The system used a 60-level food curve, storage caps, and duplicate evolution gates. The important design choice was that late-game investment grew sharply while early levels stayed approachable.</p>
                 </div>
@@ -896,14 +924,14 @@
                         </div>
                     </div>
                 </div>
-                <div class="data-panel reveal">
-                    <div class="data-panel-header">
+                <details class="data-panel level-details reveal" open>
+                    <summary class="level-details-summary">
                         <div>
                             <p class="eyebrow">Full level curve</p>
                             <h3>Level-by-level Pet Food, base stat, and storage caps</h3>
                         </div>
-                        <p>This is the raw balancing layer behind the cleaner summary charts above.</p>
-                    </div>
+                        <span class="level-details-cue">Toggle all 60 levels</span>
+                    </summary>
                     <div class="data-table-wrap level-table-wrap" aria-label="Level 1 to 60 pet balance table">
                         <table class="data-table level-table">
                             <thead>
@@ -981,7 +1009,7 @@
                             </tbody>
                         </table>
                     </div>
-                </div>
+                </details>
                 <div class="food-insights">
                     <article class="card reveal"><strong>7,835</strong><span>Pet Food across levels 1-20 kept early progress approachable.</span></article>
                     <article class="card reveal"><strong>147,600</strong><span>Pet Food across levels 21-40 introduced real investment pressure.</span></article>
@@ -993,9 +1021,9 @@
         <section class="slide" id="evolution">
             <div class="content">
                 <div class="reveal">
-                    <p class="eyebrow">06 / Duplicate economy</p>
+                    <p class="eyebrow">05 / Evolution logic</p>
                     <h2>Acquiring multiple same type of pets was meaningful</h2>
-                    <p class="lead">At each gate, two pets of the same species and level merged into one stronger pet. The merge tree made repeat discoveries, premium pulls, and offer pets useful instead of disappointing. A final evolved pet represented many earlier pets, helping duplicate-heavy rewards keep long-term value.</p>
+                    <p class="lead">At each gate, two same-species, same-level pets merged into one stronger pet, so duplicates from pulls, offers, and rewards stayed valuable instead of disappointing. A final pet folded in 32 earlier ones.</p>
                 </div>
                 <div class="merge-stats">
                     <article class="card reveal"><strong>2:1</strong><span>Same species and same level required at every gate.</span></article>
@@ -1003,9 +1031,9 @@
                     <article class="card reveal"><strong>31</strong><span>Duplicate pets consumed through the merge tree.</span></article>
                     <article class="card reveal"><strong>61h</strong><span>Timer sum across the five milestone gates on one straight path.</span></article>
                 </div>
-                <div class="proof-note reveal proof-note-compact">
-                    <span>Evolution gates</span>
-                    <p>Milestone gates created visible upgrade moments while timers added pacing and optional ruby acceleration without making the whole system a direct purchase.</p>
+                <div class="note-head reveal">
+                    <h3>Evolution gates by level</h3>
+                    <p>Each node is the evolution level. Its timer is the wait to evolve the merged pet; rubies optionally skip the wait.</p>
                 </div>
                 <div class="evolution reveal" aria-label="Evolution milestones">
                     <div class="evo-step"><div class="node">10</div><b>1 hour</b><small>5 rubies to skip</small></div>
@@ -1013,10 +1041,6 @@
                     <div class="evo-step"><div class="node">30</div><b>8 hours</b><small>15 rubies to skip</small></div>
                     <div class="evo-step"><div class="node">40</div><b>16 hours</b><small>20 rubies to skip</small></div>
                     <div class="evo-step"><div class="node">50</div><b>32 hours</b><small>25 rubies to skip</small></div>
-                </div>
-                <div class="proof-note reveal proof-note-compact">
-                    <span>Bonus roll</span>
-                    <p>Evolution could also add a specialization bonus, giving high-investment pets a chance to become more valuable for a specific output role.</p>
                 </div>
                 <div class="split" style="margin-top:24px">
                     <div class="donut-wrap reveal">
@@ -1031,7 +1055,7 @@
                     </div>
                     <div class="legend reveal">
                         <h3>Evolution roll</h3>
-                        <p class="lead">A successful roll adds +10% to one AFK role. The remaining 50% produces no bonus.</p>
+                        <p class="lead">Each evolution ran a luck-based roll for a permanent bonus. A success added +10% to one AFK role; the other 50% gave nothing, creating small variation between two otherwise identical pets.</p>
                         <div class="legend-row"><i style="background:var(--berry)"></i><span>Treasure bonus</span><b>12.5%</b></div>
                         <div class="legend-row"><i style="background:var(--moss)"></i><span>Ingredient bonus</span><b>12.5%</b></div>
                         <div class="legend-row"><i style="background:var(--gold)"></i><span>Coin bonus</span><b>12.5%</b></div>
@@ -1044,13 +1068,13 @@
         <section class="slide" id="care">
             <div class="content">
                 <div class="reveal">
-                    <p class="eyebrow">07 / Care modifier</p>
+                    <p class="eyebrow">06 / Care modifier</p>
                     <h2>Taking care of your pet was beneficial</h2>
                     <p class="lead">Care was not only presentation. Mood changed AFK efficiency, while walking, leveling, Soap, and Super Soap turned care into a repeatable resource loop with real output value.</p>
                 </div>
-                <div class="proof-note reveal">
-                    <span>Mood multiplier</span>
-                    <p>The pet mood state gave the care fantasy a visible system effect: low mood slowed output, while higher mood made the pet work faster.</p>
+                <div class="note-head reveal">
+                    <h3>Mood multiplier</h3>
+                    <p>Mood gave the care fantasy a real system effect. Each mood band was an efficiency multiplier on every AFK output, so a sad pet at 0.6&times; produced less and a thrilled pet at 1.5&times; produced more. Better mood, better results.</p>
                 </div>
                 <div class="mood reveal">
                     <div class="mood-step" style="--mood-color:#758087">
@@ -1070,10 +1094,6 @@
                         <strong>1.5&times;</strong><span>Mood above 2,000</span>
                     </div>
                 </div>
-                <div class="proof-note reveal proof-note-compact">
-                    <span>Care actions</span>
-                    <p>Players could improve mood through normal play and consumable resources. This made walking, Pet Food, Soap, and Super Soap all feel connected to pet efficiency.</p>
-                </div>
                 <div class="mechanic-grid">
                     <article class="card reveal">
                         <h3>Walking</h3>
@@ -1088,23 +1108,15 @@
                         <p>Super Soap added +600 Super Mood and enabled Super Mode: enhanced ingredient finds and a chance to attract another pet.</p>
                     </article>
                 </div>
-                <div class="proof-note reveal proof-note-compact">
-                    <span>Super Mode</span>
-                    <p>The premium care state was designed as a temporary high-value moment: players could spend a stronger care resource to improve output and create a chance for another pet.</p>
-                </div>
             </div>
         </section>
 
         <section class="slide" id="economy">
             <div class="content">
                 <div class="reveal">
-                    <p class="eyebrow">08 / Reward economy</p>
+                    <p class="eyebrow">07 / Reward economy</p>
                     <h2>The pet system created reusable reward surfaces</h2>
                     <p class="lead">The system created a compact family of rewards that could be reused across free progression, premium tracks, login rewards, team rewards, events, loot boxes, store offers, and personal offers.</p>
-                </div>
-                <div class="proof-note reveal">
-                    <span>Reward family</span>
-                    <p>Pet Food became especially useful as a reward model because it was always meaningful: it could support events, offers, loot boxes, premium tracks, team rewards, and long-term pet progression without feeling like filler.</p>
                 </div>
                 <div class="resource-family">
                     <article class="card reveal">
@@ -1130,19 +1142,17 @@
         <section class="slide" id="reflection">
             <div class="content">
                 <div class="reveal">
-                    <p class="eyebrow">09 / Design reflection</p>
+                    <p class="eyebrow">08 / Design reflection</p>
                     <h2>What worked, where pressure built, and what I would revisit</h2>
                 </div>
                 <div class="reflection">
                     <article class="card strength reveal">
                         <h3>System strengths</h3>
                         <ul>
-                            <li>Readable species identities</li>
-                            <li>Player-directed AFK output</li>
+                            <li>Gave active players a new progression tool to upgrade and use</li>
+                            <li>Tied into season and team progression, supporting both solo and competitive play</li>
                             <li>Long-term value for basic, premium, and duplicate pets</li>
-                            <li>Element-based random and targeted searching</li>
-                            <li>Super Mode creates temporary jackpot potential</li>
-                            <li>Visible storage and output growth</li>
+                            <li>Super Mode created temporary jackpot potential</li>
                         </ul>
                     </article>
                     <article class="card risk reveal">
@@ -1151,8 +1161,6 @@
                             <li>Steep level 41-60 food wall</li>
                             <li>50% no-bonus evolution result</li>
                             <li>Pet Food supply needs careful event and offer pacing</li>
-                            <li>Collection chance may exceed 100%</li>
-                            <li>Selected-item rules rely on client validation</li>
                         </ul>
                     </article>
                     <article class="card finding reveal">
