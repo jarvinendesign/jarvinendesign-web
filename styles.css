@@ -1614,6 +1614,7 @@ button {
 @media (max-width: 900px) {
   .site-header {
     grid-template-columns: 1fr auto;
+    backdrop-filter: none;
   }
 
   .menu-toggle {
