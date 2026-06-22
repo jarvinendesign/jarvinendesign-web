@@ -355,7 +355,7 @@ button {
   padding: 7px 10px;
   border: 1px solid var(--line);
   border-radius: 999px;
-  font-size: 9px;
+  font-size: 10px;
 }
 
 .section-heading h2,
@@ -509,7 +509,7 @@ button {
 
 .card-index {
   color: #a7a59e;
-  font-size: 9px;
+  font-size: 10px;
 }
 
 .impact-feature-copy h3 {
@@ -661,7 +661,7 @@ button {
 
 .number-card h3 {
   margin: 0 0 8px;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
   letter-spacing: -0.025em;
 }
@@ -671,7 +671,7 @@ button {
   margin-bottom: 8px;
   color: var(--muted);
   font-family: var(--font-mono);
-  font-size: 8px;
+  font-size: 10px;
   letter-spacing: 0.07em;
   text-transform: uppercase;
 }
@@ -683,7 +683,7 @@ button {
 .number-card p {
   margin: 0;
   color: var(--muted);
-  font-size: 10px;
+  font-size: 12px;
   line-height: 1.5;
 }
 
@@ -709,7 +709,7 @@ button {
 .leadership-label {
   color: var(--muted);
   font-family: var(--font-mono);
-  font-size: 9px;
+  font-size: 10px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -721,13 +721,13 @@ button {
 .leadership-item strong {
   display: block;
   margin-bottom: 6px;
-  font-size: 13px;
+  font-size: 15px;
 }
 
 .leadership-item p {
   margin: 0;
   color: var(--muted);
-  font-size: 10px;
+  font-size: 12px;
   line-height: 1.5;
 }
 
@@ -736,7 +736,7 @@ button {
   margin: 14px 0 0;
   color: var(--muted);
   font-family: var(--font-mono);
-  font-size: 8px;
+  font-size: 10px;
   line-height: 1.5;
   text-transform: uppercase;
 }
@@ -774,7 +774,7 @@ button {
   justify-content: space-between;
   padding: 18px 20px;
   border-bottom: 1px solid var(--line);
-  font-size: 9px;
+  font-size: 10px;
 }
 
 .case-visual {
@@ -823,7 +823,7 @@ button {
   background: rgb(250 249 245 / 80%);
   border-radius: 999px;
   font-family: var(--font-mono);
-  font-size: 8px;
+  font-size: 10px;
   letter-spacing: 0.08em;
   backdrop-filter: blur(6px);
 }
@@ -1133,7 +1133,7 @@ button {
   border-radius: 999px;
   cursor: pointer;
   font-family: var(--font-mono);
-  font-size: 9px;
+  font-size: 11px;
   text-transform: uppercase;
   transition: color 180ms ease, background 180ms ease;
 }
@@ -1194,14 +1194,14 @@ button {
 
 .project-info h3 {
   margin: 0;
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 600;
 }
 
 .project-info span {
   color: var(--muted);
   font-family: var(--font-mono);
-  font-size: 8px;
+  font-size: 10px;
   text-transform: uppercase;
 }
 
@@ -1519,7 +1519,7 @@ button {
   padding-top: 24px;
   border-top: 1px solid #35342f;
   font-family: var(--font-mono);
-  font-size: 9px;
+  font-size: 10px;
   text-transform: uppercase;
 }
 
@@ -1536,7 +1536,7 @@ button {
 
 .principle-list strong {
   color: var(--acid);
-  font-size: 9px;
+  font-size: 10px;
 }
 
 .principle-list p {
@@ -1566,7 +1566,7 @@ button {
   margin: 12px 0 0;
   color: #9c9c94;
   font-family: var(--font-mono);
-  font-size: 9px;
+  font-size: 11px;
   text-transform: uppercase;
 }
 
@@ -1596,7 +1596,7 @@ button {
   color: #77756f;
   border-top: 1px solid #35342f;
   font-family: var(--font-mono);
-  font-size: 8px;
+  font-size: 10px;
   text-transform: uppercase;
 }
 
