@@ -1,18 +1,18 @@
 :root {
-  --ink: #11110f;
-  --paper: #f4f1e9;
-  --bright: #faf9f5;
-  --muted: #706f69;
-  --line: #d8d4ca;
-  --acid: #efb64d;
-  --coral: #ff6846;
-  --blue: #627bf4;
-  --lavender: #d8d2ff;
+  --ink: #141414;
+  --paper: #f7f7f2;
+  --bright: #ffffff;
+  --muted: #70706a;
+  --line: #deded7;
+  --acid: #f3c64e;
+  --coral: #f46246;
+  --blue: #6977e8;
+  --lavender: #e1def7;
   --radius-lg: 28px;
   --radius-md: 18px;
   --page-pad: clamp(20px, 5vw, 78px);
-  --body: "Manrope", Arial, sans-serif;
-  --display: Georgia, "Times New Roman", serif;
+  --body: "Inter Tight", Arial, sans-serif;
+  --display: "Inter Tight", Arial, sans-serif;
   --mono: "DM Mono", Consolas, monospace;
 }
 
@@ -710,7 +710,7 @@ blockquote {
 }
 
 .reflection-grid p {
-  color: #aaa8a1;
+  color: #9c9c94;
   font-size: 12px;
   line-height: 1.65;
 }

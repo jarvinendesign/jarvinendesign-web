@@ -1,21 +1,21 @@
 :root {
-  --night: #11110f;
-  --deep: #1c1c19;
-  --cream: #f4f1e9;
-  --paper: #faf9f5;
-  --coral: #ff6846;
-  --sun: #efb64d;
-  --mint: #9bc79c;
-  --sky: #8298f2;
-  --plum: #d8d2ff;
-  --ink: #11110f;
-  --muted: #706f69;
-  --line: #d8d4ca;
+  --night: #141414;
+  --deep: #1f1f1d;
+  --cream: #f7f7f2;
+  --paper: #ffffff;
+  --coral: #f46246;
+  --sun: #f3c64e;
+  --mint: #b4c9a8;
+  --sky: #8f9ae9;
+  --plum: #e1def7;
+  --ink: #141414;
+  --muted: #70706a;
+  --line: #deded7;
   --radius: 22px;
   --shadow: none;
   --page-pad: clamp(20px, 5vw, 78px);
-  --body: "Manrope", Arial, sans-serif;
-  --display: Georgia, "Times New Roman", serif;
+  --body: "Inter Tight", Arial, sans-serif;
+  --display: "Inter Tight", Arial, sans-serif;
   --mono: "DM Mono", Consolas, monospace;
 }
 
@@ -413,7 +413,7 @@ h3 {
 }
 
 .role-snapshot article:nth-child(4) span {
-  color: #aaa8a1;
+  color: #9c9c94;
 }
 
 .role-note {
@@ -524,7 +524,7 @@ h3 {
 }
 
 .stat.challenge {
-  background: #ece9e0;
+  background: #ecece6;
   border-color: var(--line);
 }
 
