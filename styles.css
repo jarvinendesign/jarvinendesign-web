@@ -1712,6 +1712,8 @@ button {
 
   .number-card {
     min-height: 220px;
+    justify-content: flex-start;
+    gap: 18px;
   }
 
   .leadership-row {
