@@ -419,6 +419,34 @@ h3 { font-size: 17px; letter-spacing: -0.025em; }
 .shot figcaption { padding: 16px 18px 20px; color: var(--muted); font-size: 14px; line-height: 1.45; }
 .shot strong { display: block; margin-bottom: 6px; color: var(--ink); font-size: 15px; }
 
+/* Prop / furniture gallery */
+.props {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.prop {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.prop img {
+  width: 100%;
+  aspect-ratio: 1;
+  padding: 16px;
+  object-fit: contain;
+  background: var(--paper-deep);
+}
+
+.prop figcaption { padding: 14px 16px 18px; color: var(--muted); font-size: 13px; line-height: 1.4; }
+.prop strong { display: block; margin-bottom: 4px; color: var(--ink); font-size: 14px; }
+
 /* Reflection */
 .reflection {
   display: grid;
@@ -461,7 +489,7 @@ h3 { font-size: 17px; letter-spacing: -0.025em; }
   .step,
   .step:nth-child(even) .step-body,
   .step:nth-child(even) .step-figure { grid-template-columns: 1fr; order: 0; }
-  .stat-grid, .gallery, .reflection { grid-template-columns: repeat(2, 1fr); }
+  .stat-grid, .gallery, .reflection, .props { grid-template-columns: repeat(2, 1fr); }
   .hero-figure { aspect-ratio: 16 / 10; }
 }
 
