@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Delivery case study: shipping a functional 3D base-building feature for Moomin Move within a fixed 60 man-day budget, then expanding it into core gameplay.">
+    <title>Base Building in 60 Man-Days | Jarvinen Design</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="../../images/jd_logo.ico" sizes="any" />
+    <link rel="apple-touch-icon" href="../../images/jd_logo_transparent.png" />
+    <link rel="stylesheet" href="base-building.css">
+</head>
+<body>
+    <header class="case-header">
+        <a class="case-wordmark" href="../../index.html" aria-label="Jarvinen Design home">
+            <span><img src="../../images/jd_logo_transparent.png" alt="" aria-hidden="true"></span>
+            <strong>Jarvinen Design</strong>
+        </a>
+        <div class="case-header-links">
+            <a href="../../index.html#work">All case studies</a>
+            <a href="#reflection">Reflection</a>
+        </div>
+        <a class="case-close" href="../../index.html#work" aria-label="Close case study">Close <span aria-hidden="true">&times;</span></a>
+    </header>
+    <div class="progress" aria-hidden="true"></div>
+    <nav class="chapter-nav" aria-label="Case study chapters">
+        <a href="#intro">Intro</a>
+        <a href="#brief">Brief</a>
+        <a href="#choice">2D or 3D</a>
+        <a href="#unblock">Build first</a>
+        <a href="#greybox">Greybox</a>
+        <a href="#polish">Polish</a>
+        <a href="#result">60-day MVP</a>
+        <a href="#expansion">Expansion</a>
+        <a href="#reflection">Reflection</a>
+    </nav>
+
+    <main>
+        <section class="slide" id="intro">
+            <div class="content hero-grid">
+                <div>
+                    <p class="eyebrow">Case study / Delivery under constraint</p>
+                    <h1>Shipping base building in 60 man-days</h1>
+                    <p class="lead">I was tasked to deliver a functional 3D base-building feature for Moomin Move on a fixed 60 man-day budget. I sequenced the work so development never waited on art, hit the deadline with a playable MVP, and the feature later grew into a core part of the game.</p>
+                    <div class="meta">
+                        <span class="pill">60 man-day budget</span>
+                        <span class="pill">Shipped into a live game</span>
+                        <span class="pill">3D over 2D</span>
+                        <span class="pill">MVP, then expanded</span>
+                        <span class="pill">Design · UX · monetization</span>
+                        <span class="pill">Environment &amp; optimization</span>
+                    </div>
+                </div>
+                <figure class="hero-figure">
+                    <img src="../../images/basebuilding_beta_visual_gameplay.png" alt="Finished 3D base-building valley with the Moomin house at the center">
+                </figure>
+            </div>
+        </section>
+
+        <section class="slide" id="brief">
+            <div class="content">
+                <p class="eyebrow">01 / The brief</p>
+                <h2>A functional base-building game, in a fixed budget</h2>
+                <p class="lead">The ask was concrete: add a working base-building feature to an already-live game within 60 man-days. The game was in service with real players, so the work had to integrate cleanly without disruption. The real challenge was scoping and sequencing, not just designing.</p>
+                <div class="case-brief">
+                    <article class="brief-card">
+                        <span>The constraint</span>
+                        <h3>60 man-days to a playable, functional feature.</h3>
+                        <p>A fixed budget inside a live F2P game meant the plan had to protect development time, reuse where possible, and reach a testable build fast rather than chase polish first.</p>
+                    </article>
+                    <article class="brief-card brief-card-dark">
+                        <span>My role</span>
+                        <h3>I owned the experience, the world, and the plan.</h3>
+                        <ul>
+                            <li>Game design and monetization design for the feature</li>
+                            <li>UI and UX for build, craft, and grid placement</li>
+                            <li>Visual environment design and greyboxing</li>
+                            <li>Textures, skybox, and scene optimization</li>
+                            <li>Stakeholder communication and scope decisions</li>
+                        </ul>
+                        <p>A dedicated prop artist made the furniture, and a code developer built the systems. I connected design, art, monetization, and delivery.</p>
+                    </article>
+                </div>
+                <div class="stat-grid">
+                    <article class="stat"><strong>60</strong><span>Man-day budget for the first MVP</span></article>
+                    <article class="stat"><strong>3D</strong><span>Format selected over 2D for depth</span></article>
+                    <article class="stat"><strong>On time</strong><span>First MVP shipped to schedule</span></article>
+                    <article class="stat"><strong>End to end</strong><span>Design, UX, art, monetization, and stakeholder comms</span></article>
+                </div>
+            </div>
+        </section>
+
+        <section class="slide" id="choice">
+            <div class="content">
+                <p class="eyebrow">02 / First decision</p>
+                <h2>2D or 3D, decided with quick visual tests</h2>
+                <p class="lead">Before committing the budget, I pitched the format. I produced fast visual tests of how a build space could look in the Moomin world so the team could choose with their eyes, not just a spec. 3D was selected for its depth and decoration value.</p>
+                <div class="gallery">
+                    <figure class="shot">
+                        <img src="../../images/basebuilding_early_modeltest.png" alt="Early 3D model and look test for the base-building space">
+                        <figcaption><strong>Look test</strong>An early model test exploring how a 3D build space would read in the Moomin style.</figcaption>
+                    </figure>
+                    <figure class="shot">
+                        <img src="../../images/basebuilding_early_modeltest_dedicated_build_minigame.png" alt="Concept test for a dedicated build minigame">
+                        <figcaption><strong>Dedicated build space</strong>Testing the idea of a separate, focused build minigame around the house.</figcaption>
+                    </figure>
+                    <figure class="shot">
+                        <img src="../../images/basebuild_early_grid_spacing_study.png" alt="Grid spacing study for placement">
+                        <figcaption><strong>Grid study</strong>Spacing study to size the placement grid before any systems were built.</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <section class="slide" id="unblock">
+            <div class="content">
+                <p class="eyebrow">03 / Sequencing</p>
+                <h2>Unblock the developer on day one</h2>
+                <p class="lead">To protect the 60-day budget, I made the work parallel from the start. Instead of building a finished world, I built the smallest possible one and handed it over immediately.</p>
+                <div class="process">
+                    <article class="step">
+                        <div class="step-body">
+                            <span class="num">Move 01</span>
+                            <h3>Smallest playable world first</h3>
+                            <p>I created just a flat surface with the Moomin house in the center, so the developer could start at once on camera controls and a crude grid-placement system. Placeholder furniture went in early, and we tested controls and placement before any real art existed. Development never waited on me.</p>
+                        </div>
+                        <figure class="step-figure">
+                            <img src="../../images/basebuilding_early_prototype_gameplay_testing.png" alt="Early prototype with flat surface, house, and placeholder furniture being tested">
+                        </figure>
+                    </article>
+                </div>
+                <div class="gallery">
+                    <figure class="shot">
+                        <img src="../../images/basebuild_early_ui_test.png" alt="Early build UI test">
+                        <figcaption><strong>Early UI test</strong>First pass at the build and placement interface.</figcaption>
+                    </figure>
+                    <figure class="shot">
+                        <img src="../../images/basebuild_early_ui_test_b.png" alt="Second early build UI test">
+                        <figcaption><strong>UI iteration</strong>Refining the controls for placing, rotating, and removing items.</figcaption>
+                    </figure>
+                    <figure class="shot">
+                        <img src="../../images/basebuild_early_beta_selection_build.png" alt="Build selection UI">
+                        <figcaption><strong>Selection &amp; build</strong>The build menu taking shape over the live grid.</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <section class="slide" id="greybox">
+            <div class="content">
+                <p class="eyebrow">04 / Greybox</p>
+                <h2>I gray-boxed the first world myself</h2>
+                <p class="lead">While controls matured in parallel, I blocked out the first full world in grey geometry. It was the fast way to lock layout, scale, and composition without waiting on final art, and it gave the team a real space to test against.</p>
+                <div class="gallery">
+                    <figure class="shot">
+                        <img src="../../images/basebuilding_early_prototype_grayblock.png" alt="Gray-boxed prototype world layout">
+                        <figcaption><strong>Grey-box pass</strong>Blocky geometry to establish the world's shape and scale fast.</figcaption>
+                    </figure>
+                    <figure class="shot">
+                        <img src="../../images/basebuilding_early_prototype_grayblock_b.png" alt="Gray-boxed world iteration">
+                        <figcaption><strong>Layout iteration</strong>Tuning composition and traversal before committing to art.</figcaption>
+                    </figure>
+                    <figure class="shot">
+                        <img src="../../images/basebuilding_early_prototype_grayblock_blocks.png" alt="Gray block building pieces">
+                        <figcaption><strong>Building blocks</strong>Reusable grey pieces that assembled the early environment.</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <section class="slide" id="polish">
+            <div class="content">
+                <p class="eyebrow">05 / Polish &amp; optimization</p>
+                <h2>Textured, optimized, and finished on mobile</h2>
+                <p class="lead">With layout locked, I fine-tuned and textured the environment, then made it cheap to run. Simple tiling textures, a skybox, and linear fog hid the horizon without cost, and the UI was refined into working crafting and grid-placement systems.</p>
+                <div class="note-head">
+                    <h3>Optimization learnings from Sega Rally</h3>
+                    <p>I applied environment-optimization techniques from console racing work to keep the scene highly performant on mobile, which is what let a full 3D world ship inside the budget.</p>
+                </div>
+                <div class="gallery">
+                    <figure class="shot">
+                        <img src="../../images/basebuilding_alpha_ui_wip.png" alt="Alpha build UI work in progress">
+                        <figcaption><strong>Alpha UI</strong>Crafting and placement systems coming together over the textured world.</figcaption>
+                    </figure>
+                    <figure class="shot">
+                        <img src="../../images/basebuilding_beta_visual_gameplay.png" alt="Beta visual gameplay of the base-building feature">
+                        <figcaption><strong>Beta visuals</strong>Tiling textures, skybox, and fog deliver the finished look cheaply.</figcaption>
+                    </figure>
+                    <figure class="shot">
+                        <img src="../../images/basebuilding_beta_visual_gameplay_grid.png" alt="Beta gameplay showing the placement grid">
+                        <figcaption><strong>Placement grid</strong>The grid system that drives crafting, placement, and removal.</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <section class="slide" id="result">
+            <div class="content">
+                <p class="eyebrow">06 / The 60-day result</p>
+                <h2>A playable MVP, delivered on time</h2>
+                <p class="lead">At 60 man-days the feature was functional and shipping: a 3D valley you could build, craft, and decorate. The prop artist's first furniture set became sellable items in loot boxes alongside craftable pieces, giving the feature day-one economy hooks.</p>
+                <div class="stat-grid">
+                    <article class="stat"><strong>3D</strong><span>Buildable, decoratable valley</span></article>
+                    <article class="stat"><strong>Craft + place</strong><span>Working grid crafting and placement</span></article>
+                    <article class="stat"><strong>Loot + craft</strong><span>Furniture sold in boxes and craftable</span></article>
+                    <article class="stat"><strong>Validated</strong><span>Proven base to expand from</span></article>
+                </div>
+            </div>
+        </section>
+
+        <section class="slide" id="expansion">
+            <div class="content">
+                <p class="eyebrow">07 / After validation</p>
+                <h2>From a visual minigame to the core of the game</h2>
+                <p class="lead">At launch it was deliberately small, a light visual minigame rather than core gameplay. Over the next two years, two major updates changed that. The latest brought base building to the very heart of the game, making it a meaningful part of the monetization and retention gains in that period.</p>
+                <div class="stat-grid">
+                    <article class="stat"><strong>2 years</strong><span>Of expansion beyond the first MVP</span></article>
+                    <article class="stat"><strong>2 major</strong><span>Updates that deepened the feature</span></article>
+                    <article class="stat"><strong>Core</strong><span>Now central to the gameplay loop</span></article>
+                    <article class="stat"><strong>Driver</strong><span>Part of engagement, monetization, and retention</span>
+                </div>
+                <div class="note-head">
+                    <h3>What the expansion added</h3>
+                    <p>Valley visitors, party mode, and gifting in the valley, plus a recurring build event. Onboarding now starts from the valley, and tasks and story were reframed around cleaning and building it for friends in need, making the valley a reason to return rather than a side feature.</p>
+                </div>
+                <div class="note-head">
+                    <h3>Repositioned as the heart of progression</h3>
+                    <p>In the latest updates the valley became the most important part of the game's visual progression: a safe space for the friends you meet along the way, and a place to celebrate and share what you have built. I led that design change, taking it from a visual prototype to an integral part of the experience.</p>
+                </div>
+                <div class="gallery">
+                    <figure class="shot">
+                        <img src="../../images/basebuilding_beta_visual_gameplay_mockup_production_friend_visit.png" alt="Mockup of a friend visiting the player's valley">
+                        <figcaption><strong>Friend visits</strong>Visitors and gifting turned the valley into a social space.</figcaption>
+                    </figure>
+                    <figure class="shot">
+                        <img src="../../images/basebuilding_beta_visual_gameplay_season_change.png" alt="Seasonal change applied to the valley">
+                        <figcaption><strong>Seasonal valley</strong>Seasonal change kept the build space fresh across live operations.</figcaption>
+                    </figure>
+                    <figure class="shot">
+                        <img src="../../images/basebuild_early_beta_selection_build.png" alt="Build event selection interface">
+                        <figcaption><strong>Build event</strong>A recurring build event extended the feature into the live calendar.</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <section class="slide" id="reflection">
+            <div class="content">
+                <p class="eyebrow">08 / Reflection</p>
+                <h2>What I owned, what worked, and what it taught</h2>
+                <div class="reflection">
+                    <article class="card role">
+                        <h3>What I owned</h3>
+                        <ul>
+                            <li>Game and monetization design</li>
+                            <li>UI and UX for build, craft, and placement</li>
+                            <li>Visual environment design and greyboxing</li>
+                            <li>Textures, skybox, and scene optimization</li>
+                            <li>Stakeholder communication and scope</li>
+                        </ul>
+                        <p>Prop art and code were separate roles; I tied the disciplines together.</p>
+                    </article>
+                    <article class="card win">
+                        <h3>What worked</h3>
+                        <ul>
+                            <li>Smallest-world-first kept the developer busy from day one</li>
+                            <li>Greybox before art locked scope fast</li>
+                            <li>Racing-grade optimization let 3D ship on mobile</li>
+                            <li>An MVP that was validated, then expanded</li>
+                        </ul>
+                    </article>
+                    <article class="card learn">
+                        <h3>What it taught</h3>
+                        <p>A hard budget is a design tool. I shipped the cheapest testable version first to protect the schedule, while holding the larger vision the whole time. When the feature earned the investment, I led the design change that made the valley a core, social heart of the game. Delivery discipline first, vision realized once it was earned.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="slide closing">
+            <div class="content">
+                <p class="eyebrow">Outcome</p>
+                <h2>A 60 man-day feature that became part of the game's core.</h2>
+                <p class="lead">Scoping, smart sequencing, and mobile optimization delivered a functional 3D base-building feature on a fixed budget, and a validated base that grew into social, seasonal, and onboarding gameplay.</p>
+                <div class="meta">
+                    <span class="pill">Delivery under constraint</span>
+                    <span class="pill">Production sequencing</span>
+                    <span class="pill">Environment art &amp; optimization</span>
+                    <span class="pill">UI / UX design</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const progress = document.querySelector(".progress");
+        const sections = [...document.querySelectorAll("section[id]")];
+        const navLinks = [...document.querySelectorAll(".chapter-nav a")];
+
+        const update = () => {
+            const height = document.documentElement.scrollHeight - innerHeight;
+            progress.style.width = `${height > 0 ? (scrollY / height) * 100 : 0}%`;
+            let active = sections[0]?.id;
+            for (const section of sections) {
+                if (section.getBoundingClientRect().top <= innerHeight * 0.45) active = section.id;
+            }
+            navLinks.forEach(link => link.classList.toggle("active", link.hash === `#${active}`));
+        };
+
+        addEventListener("scroll", update, { passive: true });
+        addEventListener("resize", update);
+        update();
+    </script>
+</body>
+</html>
