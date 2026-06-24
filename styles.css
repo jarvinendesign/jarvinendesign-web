@@ -1187,6 +1187,100 @@ button {
   transform: scale(1.03);
 }
 
+/* Video tiles (open a YouTube link) */
+.project-video {
+  cursor: pointer;
+}
+
+.project-play {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  z-index: 2;
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  padding: 8px 13px 8px 11px;
+  color: var(--paper-bright);
+  background: rgb(17 17 15 / 60%);
+  border: 1px solid rgb(255 255 255 / 28%);
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  backdrop-filter: blur(4px);
+  transition: background 200ms ease, border-color 200ms ease;
+}
+
+.project-play i {
+  display: block;
+  width: 13px;
+  height: 13px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23fff'%3E%3Cpath d='M8 5v14l11-7z'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+.project-video:hover .project-play {
+  background: var(--coral);
+  border-color: var(--coral);
+}
+
+/* Video popup */
+.video-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: none;
+  place-items: center;
+  padding: clamp(16px, 4vw, 40px);
+  background: rgb(10 10 8 / 84%);
+  backdrop-filter: blur(6px);
+}
+
+.video-modal.is-open {
+  display: grid;
+}
+
+.video-modal-frame {
+  position: relative;
+  width: min(1100px, 100%);
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #000;
+  border-radius: 14px;
+  box-shadow: 0 30px 90px rgb(0 0 0 / 55%);
+}
+
+.video-modal-frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.video-modal-close {
+  position: absolute;
+  top: clamp(12px, 3vw, 24px);
+  right: clamp(12px, 3vw, 24px);
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  color: #fff;
+  background: rgb(255 255 255 / 12%);
+  border: 1px solid rgb(255 255 255 / 30%);
+  border-radius: 50%;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 180ms ease;
+}
+
+.video-modal-close:hover {
+  background: rgb(255 255 255 / 22%);
+}
+
 .project-info {
   display: flex;
   justify-content: space-between;
