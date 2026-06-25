@@ -1225,6 +1225,21 @@ button {
   border-color: var(--coral);
 }
 
+.project-tag {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 2;
+  padding: 6px 11px;
+  color: var(--ink);
+  background: var(--acid);
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
 /* Video popup */
 .video-modal {
   position: fixed;
