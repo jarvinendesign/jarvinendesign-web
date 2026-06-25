@@ -75,8 +75,11 @@ if (videoModal && videoTiles.length) {
   const closeVideo = () => {
     videoModal.classList.remove("is-open");
     videoModal.setAttribute("aria-hidden", "true");
-    videoFrame.innerHTML = "";
     document.body.classList.remove("menu-open");
+    // Clear the iframe after the fade-out so the close animates cleanly.
+    window.setTimeout(() => {
+      if (!videoModal.classList.contains("is-open")) videoFrame.innerHTML = "";
+    }, 240);
   };
 
   videoTiles.forEach((tile) => {

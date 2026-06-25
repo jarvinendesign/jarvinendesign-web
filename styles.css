@@ -14,6 +14,7 @@
   --font-body: "Inter Tight", Arial, sans-serif;
   --font-display: "Inter Tight", Arial, sans-serif;
   --font-mono: "DM Mono", Consolas, monospace;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 * {
@@ -261,6 +262,10 @@ button {
 .button-dark:hover {
   background: #36352f;
   transform: translateY(-2px);
+}
+
+.button:active {
+  transform: scale(0.97);
 }
 
 .text-link {
@@ -1137,7 +1142,11 @@ button {
   font-family: var(--font-mono);
   font-size: 11px;
   text-transform: uppercase;
-  transition: color 180ms ease, background 180ms ease;
+  transition: color 180ms ease, background 180ms ease, transform 160ms var(--ease-out);
+}
+
+.filter-button:active {
+  transform: scale(0.95);
 }
 
 .filter-button:hover,
@@ -1245,15 +1254,22 @@ button {
   position: fixed;
   inset: 0;
   z-index: 200;
-  display: none;
+  display: grid;
   place-items: center;
   padding: clamp(16px, 4vw, 40px);
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
   background: rgb(10 10 8 / 84%);
   backdrop-filter: blur(6px);
+  transition: opacity 220ms ease-out, visibility 0s linear 220ms;
 }
 
 .video-modal.is-open {
-  display: grid;
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 220ms ease-out, visibility 0s;
 }
 
 .video-modal-frame {
@@ -1264,6 +1280,12 @@ button {
   background: #000;
   border-radius: 14px;
   box-shadow: 0 30px 90px rgb(0 0 0 / 55%);
+  transform: scale(0.96);
+  transition: transform 260ms var(--ease-out);
+}
+
+.video-modal.is-open .video-modal-frame {
+  transform: scale(1);
 }
 
 .video-modal-frame iframe {
@@ -1713,8 +1735,8 @@ button {
 
 .reveal {
   opacity: 0;
-  transform: translateY(22px);
-  transition: opacity 700ms ease, transform 700ms cubic-bezier(0.2, 0.65, 0.3, 1);
+  transform: translateY(18px);
+  transition: opacity 520ms ease-out, transform 520ms var(--ease-out);
 }
 
 .reveal.is-visible {

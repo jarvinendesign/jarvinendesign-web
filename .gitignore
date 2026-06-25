@@ -1,0 +1,8 @@
+# Local AI skill tooling (not site content)
+.agents/
+.claude/skills/
+skills-lock.json
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
