@@ -423,7 +423,7 @@ h3 { font-size: 17px; letter-spacing: -0.025em; }
 .props {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 12px;
+  gap: 10px;
   margin-top: 16px;
 }
 
@@ -439,13 +439,13 @@ h3 { font-size: 17px; letter-spacing: -0.025em; }
 .prop img {
   width: 100%;
   aspect-ratio: 1;
-  padding: 16px;
+  padding: 12px;
   object-fit: contain;
   background: var(--paper-deep);
 }
 
-.prop figcaption { padding: 14px 16px 18px; color: var(--muted); font-size: 13px; line-height: 1.4; }
-.prop strong { display: block; margin-bottom: 4px; color: var(--ink); font-size: 14px; }
+.prop figcaption { padding: 11px 13px 14px; color: var(--muted); font-size: 11px; line-height: 1.35; }
+.prop strong { display: block; margin-bottom: 3px; color: var(--ink); font-size: 13px; }
 
 /* Reflection */
 .reflection {
